@@ -49,7 +49,8 @@ Los errores se imprimen primero, así que si algo está roto se ve sin desplazar
 | `editions_mismatch` | `goya.editions` no cuadra con las ediciones de las nominaciones |
 | `duplicate_slug` | Dos registros con el mismo `slug` |
 | `missing_slug` | Un registro sin identificador |
-| `films_without_nominations` | Una película sin ninguna nominación |
+| `films_without_nominations` | Las películas sin ninguna nominación, listadas todas juntas |
+| `no_nominations` | Lo mismo, pero por película. Es redundante con la anterior a propósito: se ve en el mensaje de cada una y también en el resumen |
 | `no_editions` | No se registró ninguna edición |
 | `counts_disagree` | `_meta.counts` no cuadra con los datos (fichero editado a mano) |
 
@@ -57,14 +58,20 @@ Los errores se imprimen primero, así que si algo está roto se ve sin desplazar
 
 | `check` | Qué detecta |
 |---|---|
-| `nominations_disagree_with_source` | Our count ≠ el contador de la web |
-| `awards_disagree_with_source` | Our count ≠ el contador de la web |
+| `nominations_disagree_with_source` | Nuestra cifra ≠ el contador de la web |
+| `awards_disagree_with_source` | Nuestra cifra ≠ el contador de la web |
 | `award_claimed_only_by_movie_page` | La ficha se atribuye un premio que **ninguna** edición concede |
 | `award_claimed_only_by_edition_page` | La edición concede un premio que la **ficha** no cuenta |
 | `no_detail_page` | La película existe pero su ficha no se pudo leer |
+| `award_categories_not_recorded` | La ficha declara premios pero el documento no guardó **cuáles** (schema v1/v2), así que no se puede comparar por categoría (ADR-023) |
 
-Los dos últimos son los que hacen útil el validador. No dicen "los números no cuadran",
-dicen **qué premio concreto** está en disputa (ADR-020).
+Los dos `award_claimed_only_by_*` son los que hacen útil el validador. No dicen "los
+números no cuadran", dicen **qué premio concreto** está en disputa (ADR-020).
+
+`award_categories_not_recorded` separa dos cosas que se parecerían: `award_categories`
+a `[]` significa "la ficha dice que no ganó nada", que es una respuesta real y
+comparable; a `None` significa "nunca lo registramos", que no lo es. Sin el aviso, un
+documento antiguo parecería limpio sin serlo.
 
 ### INFO — raro pero legítimo
 
@@ -72,6 +79,27 @@ dicen **qué premio concreto** está en disputa (ADR-020).
 |---|---|
 | `tied_categories` | Categorías con más de un ganador (empates) |
 | `films_in_several_editions` | Una película nominada en dos ediciones |
+
+### AVISO e INFO — el mapeo de categorías ha envejecido
+
+Estas cuatro no miran una película: miran si `categories.py` sigue siendo cierto. Un mapa
+curado es una afirmación escrita a mano, y lo que puede envejecer no es el programa sino
+esa afirmación (ADR-024).
+
+| `check` | Nivel | Qué detecta |
+|---|---|---|
+| `category_no_longer_used` | AVISO | Una de las dos etiquetas del par renombrado ya no aparece en ninguna edición: el mapa puede estar obsoleto |
+| `category_names_overlap` | AVISO | Las dos etiquetas coexisten en el dataset: quizá ya no sean el mismo premio |
+| `category_rename_not_contiguous` | AVISO | Las ediciones no encajan: la antigua acaba donde la nueva no empieza |
+| `categories_passing_through` | INFO | Las categorías que nunca se renombraron, que ya son canónicas de por sí |
+
+**Solo se ejecutan con más de 50 películas** (`MIN_MOVIES_TO_CHECK_CATEGORIES`): un
+documento de tres películas no puede demostrar si dos etiquetas conviven, así que en los
+tests saltarían sin motivo.
+
+Sobre los datos reales solo dispara `categories_passing_through`, con las 27 categorías
+que nunca se renombraron. Los tres AVISO no salen porque las dos parejas renombradas
+siguen siendo contiguas y sin solape: eso es exactamente lo que la comprobación verifica.
 
 ---
 
@@ -148,6 +176,21 @@ cerrados*.
 | 39 | Mejor película | 2 |
 
 Informativos a propósito. El modelo los soporta sin tocar nada.
+
+### Las 27 categorías que nunca se renombraron
+
+El segundo informativo es `categories_passing_through`, y no es un problema: son las 27
+categorías que el sitio nunca cambió de nombre y que ya son canónicas de por sí. El mapa
+de `categories.py` solo actúa sobre las 4 etiquetas que hubo que renombrar (dos pares,
+dos nombres por par), así que el resto atraviesa el mapeo sin tocarlo.
+
+Está aquí por dos razones. Una, para que el 2 de la cabecera tenga nombre. Dos, porque si
+algún día el sitio cambiara una de esas 27, el aviso seguiría diciendo lo mismo y nadie se
+enteraría: un mapeo al que todo le da igual no está comprobando nada.
+
+Los otros tres avisos de la misma comprobación no salen, y eso también es información: las
+dos parejas renombradas siguen siendo contiguas y sin solape, que es exactamente lo que las
+hace un renombrado y no dos premios distintos (ADR-024).
 
 ---
 
