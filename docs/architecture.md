@@ -120,7 +120,7 @@ eso daría un orden distinto en cada máquina y `git diff` dejaría de servir.
 **Responsabilidad:** comprobar que el documento que acabamos de escribir tiene sentido.
 
 - `validate(document) -> list[Finding]`: función **pura** sobre el diccionario. No toca la
-  red, no lee ficheros. Por eso sus 22 tests corren en milisegundos.
+  red, no lee ficheros. Por eso sus 27 tests corren en milisegundos.
 - `render(document, findings) -> str`: el informe para leer.
 
 Clasifica en tres niveles (ERROR / AVISO / INFO) porque no todo lo raro es un bug: los

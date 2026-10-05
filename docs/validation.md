@@ -78,8 +78,8 @@ dicen **qué premio concreto** está en disputa (ADR-020).
 ## Resultado sobre los datos reales
 
 ```
-40 ediciones · 1678 películas · 4050 nominaciones · 1027 premios · 33 categorías
-problemas: 0 errores, 12 avisos, 1 informational
+40 ediciones · 1678 películas · 4050 nominaciones · 1027 premios · 31 categorías
+problemas: 0 errores, 12 avisos, 2 informational
 ```
 
 **0 errores.** El dataset es internamente coherente.
@@ -180,6 +180,6 @@ Sin red, en milisegundos. Es una función pura sobre el documento.
 
 ## Cobertura de los tests
 
-22 tests en `tests/test_validate.py`, todos sobre documentos construidos a mano para
+27 tests en `tests/test_validate.py`, todos sobre documentos construidos a mano para
 provocar cada fallo. Incluyen el caso del enunciado (3 premios con 0 nominaciones), el
 triple empate, el `slug` duplicado y los contadores manipulados.

@@ -290,7 +290,7 @@ de la Academia. Este proyecto es un ejercicio de aprendizaje y no está afiliado
 **Dataset completo:** 40 ediciones (1987–2026) · 1678 películas · 4050 nominaciones ·
 1027 premios · 31 categorías canónicas.
 
-**Validación del JSON: 0 errores, 12 avisos, 1 informativo.** Los 12 avisos son 6 películas
+**Validación del JSON: 0 errores, 12 avisos, 2 informativos.** Los 12 avisos son 6 películas
 donde la web se contradice consigo misma. Ninguna es un error del scraper: las 4050
 nominaciones coinciden **1678/1678** con los contadores de la Academia. Ver
 [`docs/validation.md`](docs/validation.md).
