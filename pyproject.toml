@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "goya-scraper"
+version = "0.1.0"
+description = "Recopilador de las peliculas nominadas y ganadoras de los Premios Goya"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+# Solo lo justo. `beautifulsoup4` usa el parser de la libreria estandar
+# (html.parser), por eso no hace falta lxml.
+dependencies = [
+    "requests>=2.31",
+    "beautifulsoup4>=4.12",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# schema.sql va dentro del paquete y setuptools no lo copia por defecto: sin esto,
+# una instalacion normal (no -e) instala el paquete sin el esquema y db.read_schema()
+# falla al importarlo.
+[tool.setuptools.package-data]
+goya_scraper = ["schema.sql"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# -q por defecto para no inundar la salida de los tests
+addopts = "-q"
