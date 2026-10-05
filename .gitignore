@@ -12,12 +12,10 @@ __pycache__/
 build/
 dist/
 
-# El dataset generado: pesa y se regenera con `python -m goya_scraper`.
-# Si quieres publicarlo en GitHub, descomenta la linea siguiente.
-data/movies.json
-#data/movies.json
-
-# La base de datos SQLite: se reconstruye desde movies.json con
+# El dataset SI se versiona: es el resultado del proyecto y hace falta para
+# consultar los datos sin esperar 35 minutos de descarga. Se regenera con
+# `python -m goya_scraper`; si cambia, el commit lo deja explicito.
+# La base de datos NO: es una proyeccion reconstruible con
 # `python -m goya_scraper.import_db`. Los ficheros WAL tampoco se versionan.
 data/goya.db
 *.db-wal
