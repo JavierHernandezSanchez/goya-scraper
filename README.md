@@ -231,6 +231,7 @@ tablas no dice nada; comprobar que una duración de `'105 años'` falla sí.
 | [`docs/validation.md`](docs/validation.md)     | Qué se comprueba y qué se ha encontrado                          |
 | [`docs/database.md`](docs/database.md)         | El modelo relacional, el esquema, los índices y las consultas    |
 | [`docs/decisions.md`](docs/decisions.md)       | Registro de decisiones (38 ADR)                                  |
+| [`AGENTS.md`](AGENTS.md)                       | Cómo trabajar en el proyecto: invariantes, tests y proceso        |
 
 ---
 

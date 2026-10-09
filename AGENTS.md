@@ -1,184 +1,139 @@
 # AGENTS.md
 
-Guía práctica para agentes de IA que trabajen en `goya-scraper`.
-**No sustituye a `docs/`**: esta solo dice *dónde mirar* y *qué no romper*.
-El detalle está en la documentación; aquí no se repite.
+Instrucciones para agentes de IA que trabajen en `goya-scraper`.
+
+Este fichero define cómo trabajar en el proyecto, qué restricciones respetar y cómo verificar los cambios. No sustituye a la documentación técnica: indica qué consultar y cuándo actualizarla.
 
 ---
 
-## 1. Contexto
+## 1. Contexto y fuentes de verdad
 
-Scraper educativo que recopila todas las películas nominadas y ganadoras de los Premios
-Goya (40 ediciones, 1987–2026) desde `premiosgoya.com`, y las guarda en
-`data/movies.json`. Aparte, `data/goya.db` es una proyección SQLite reconstruible.
+`goya-scraper` recopila información sobre las películas nominadas y ganadoras de los Premios
+Goya desde `premiosgoya.com`.
 
-Dos mitades que **no se mezclan**:
+El proyecto tiene dos componentes independientes:
 
-```
-http_client ─┐
-  parse_*  ──┴─→ model → categories / credited_kinds / persons
-                            ↓
-                         storage ──→ data/movies.json   (fuente de verdad)
-                            └──→ db / import_db / db_validate ──→ data/goya.db
-```
+- **Scraper:** obtiene y normaliza los datos y los guarda en `data/movies.json`.
+- **Base de datos:** importa ese JSON a SQLite para facilitar las consultas.
 
-`data/movies.json` es la fuente de verdad. `goya.db` se puede borrar y reimportar.
-`movies.json` y `cache/` están en `.gitignore` y **no se versionan**.
+`data/movies.json` es la fuente de verdad. `data/goya.db` es una proyección reconstruible. El scraper no debe depender de SQLite.
 
-El proyecto **no tiene Git todavía**. El porqué de cada decisión está en
-`docs/decisions.md` (38 ADR), no en un historial de commits. Si algo cambia una
-decisión, se escribe un ADR nuevo.
+Consulta los siguientes documentos según la tarea:
 
----
+| Necesidad                                         | Documento              |
+| ------------------------------------------------- | ---------------------- |
+| Arquitectura y responsabilidades de los módulos   | `docs/architecture.md` |
+| Descarga, caché, reintentos e incrementalidad     | `docs/scraping.md`     |
+| Fuentes y particularidades del HTML               | `docs/sources.md`      |
+| Modelo JSON y significado de sus campos           | `docs/data-model.md`   |
+| Esquema, relaciones y consultas SQLite            | `docs/database.md`     |
+| Reglas de validación y anomalías conocidas        | `docs/validation.md`   |
+| Decisiones de diseño y alternativas descartadas   | `docs/decisions.md`    |
+| Instalación, tests y procedimientos de desarrollo | `docs/development.md`  |
 
-## 2. Antes de modificar código
+**Jerarquía de referencia:**
 
-Lee primero el documento de tu tarea. Correspondencia verificada:
+1. Las especificaciones vigentes definen el comportamiento que se pretende conseguir en el cambio.
+2. El código y los tests existentes permiten establecer el comportamiento implementado actualmente.
+3. Los documentos técnicos describen el sistema y sus contratos conocidos.
+4. Los ADR explican las decisiones, sus motivos y su evolución.
+5. `AGENTS.md` establece las reglas generales de trabajo.
 
-| Tarea                                      | Documentación          |
-| ------------------------------------------ | ---------------------- |
-| Arquitectura, responsabilidades de módulos | `docs/architecture.md` |
-| Scraping, recorrido, caché, rate limit     | `docs/scraping.md`     |
-| Fuentes y rarezas del HTML                 | `docs/sources.md`      |
-| Modelo de datos, campo a campo             | `docs/data-model.md`   |
-| Base de datos, esquema, consultas          | `docs/database.md`     |
-| Validación y hallazgos                     | `docs/validation.md`   |
-| Por qué de cada decisión (ADR)             | `docs/decisions.md`    |
-| Entorno, tests, cómo añadir cosas          | `docs/development.md`  |
+Si encuentras contradicciones, no elijas una interpretación silenciosamente. Identifica las fuentes en conflicto, inspecciona la implementación y los tests, y resuelve la discrepancia antes de diseñar el cambio. Si no puedes determinar la regla correcta, solicita aclaración.
 
-Antes de tocar nada, comprueba:
+### Estado en Git
 
-1. ¿Existe ya una función o tabla para eso? (`docs/architecture.md` lista los módulos)
-2. ¿Hay un ADR que lo decida ya? Si lo contradices, escribe uno nuevo, no lo ignores.
-3. ¿El dato **existe en la fuente**? Si no, se escribe un ADR explicando por qué no
-   se implementa. Nunca se deriva ni se inventa.
-4. ¿Qué test lo cubre? Si no hay test, el cambio no está terminado.
-5. Los fixtures de `tests/fixtures/` son HTML real recortado. Si un test falla, **comprueba
-   la fixture antes de tocar el código**.
+El proyecto usa Git sobre la rama `main`, con `LICENSE` MIT.
 
-Comandos (usar siempre el venv; el Python del sistema es PEP 668):
+**Se versiona:** `src/`, `tests/` con sus fixtures, `docs/`, `LICENSE`, `AGENTS.md` y
+`data/movies.json`.
 
-```bash
-.venv/bin/python -m pytest                    # 394 tests, ninguno toca la red
-.venv/bin/python -m goya_scraper              # descarga; ~35 min la 1ª vez
-.venv/bin/python -m goya_scraper.import_db    # movies.json -> goya.db
-.venv/bin/python -m goya_scraper.db_validate  # compara JSON <-> SQLite
-```
+**No se versiona:** `cache/` (el HTML crudo, que se vuelve a pedir al sitio),
+`data/goya.db` (se reconstruye con `import_db`), `.venv/` y `build/`.
 
-No borres `cache/` sin motivo: obliga a repetir las 1719 peticiones.
+Dos reglas que no se deducen del código:
+
+- **Regenerar el dataset produce un diff enorme.** `data/movies.json` está versionado a
+  propósito, para poder consultar los datos sin esperar la descarga. Si vuelves a
+  ejecutar el scraper, ese fichero cambia entero: el diff debe ir en un commit propio y
+  deliberado, nunca mezclado con un refactor o una corrección, porque si no acaba
+  tapando el cambio que sí importa.
+- **No borres `cache/` sin motivo.** Es lo que evita tener que volver a pedirle todas las
+  páginas al servidor en la siguiente ejecución.
 
 ---
 
-## 3. Reglas importantes
+## 2. Invariantes del proyecto
 
-### Integridad de los datos
+Estas reglas deben preservarse salvo que una tarea proponga explícitamente cambiar alguna de ellas y se apruebe la correspondiente decisión.
 
+### Integridad y procedencia de los datos
+
+- La identidad de una película es su `slug`, no su título
 - **No se inventan datos.** Si un campo no está en la fuente, es `null`.
-- **Distingue los tres estados de ausencia**: `null` = "no hay dato", `0`/`[]` = "la fuente
-  lo tenía y estaba vacío". Nunca se confunden. Ejemplo: `reported_by_source` es `None`
-  si `detail_status != "ok"`; un `0` ahí sería una mentira.
-- `reported_by_source.award_categories = None` significa "nunca se registró" (schema v1/v2),
-  no "la ficha dice que no ganó nada".
+- **Distingue los estados de ausencia**: `null` = "no hay dato", `0`/`[]` = "la fuente
+  lo tenía y estaba vacío". Nunca se confunden.
 - **El dato crudo se conserva siempre** junto al normalizado: `countries_raw`,
-  `category_raw`, `producers_raw`, `nomination_credit.credit_text`. Es lo que hace
+  `category_raw`, `producers_raw` son ejemplos de datos crudos. Esto hace
   auditable y reversible la normalización.
 - **Las erratas de la fuente no se corrigen** (`Fancia`, `Polinia`,
   `Zentropa Entertainments3 ApS`). Corregir el texto de otro es fabricar datos.
 
-### Fuentes y scraping
+### Scraping y comportamiento HTTP
 
-- **Fuente única**: `premiosgoya.com`. IMDb está prohibida por su `robots.txt`, Filmaffinity
-  está tras Cloudflare, Rotten Tomatoes exigiría un matching desproporcionado. Decidido en ADR-004; no lo reviertas sin un ADR nuevo.
-- **No se salta protecciones**: ni CAPTCHAs, ni 403, ni 429. Si el sitio bloquea, se para.
-- Solo se reintenta error de red y `{500, 502, 503, 504}`. Un 404/403/429 no se reintenta.
-- `timeout` siempre. Rate limit de 1.2 s entre peticiones **que salen**.
-- **Un fallo individual no para el proceso**, y una edición fallida **no** se anota en
-  `editions_scraped`.
-- Se guarda `movies.json` **después de cada edición** (ADR-016). No lo muevas al final.
-- `parse_edition` y `parse_movie` son funciones puras: reciben HTML, no hacen peticiones.
-  Mantenlo para que los tests no necesiten internet.
+- **Fuente única**: `premiosgoya.com`. No añadas fuentes externas sin evaluar y documentar la decisión
+- **Respeta** el `robots.txt`, el `User-Agent`, los tiempos de espera y el límite de frecuencia existente
+- No intentes eludir CAPTCHAs, Cloudflare, HTTP 403, HTTP 429 ni otras protecciones
+- Conserva la política de reintentos definida por el proyecto. Antes de modificarla consulta `docs/scraping.md` y los ADR vigentes.
+- **Un fallo individual no para el proceso** de las demás películas o ediciones.
+- Guarda `data/movies.json` después de cada edición completada; no pospongas toda la persistencia al final del proceso.
+- Una edición fallida no debe añadirse a `editions_scraped`; una edición completada sí.
+- Conserva estas reglas de recuperación incremental salvo que una modificación aprobada cambie explícitamente su comportamiento.
+- Verifica el comportamiento real en el código y los tests antes de cambiarlo.
+- `parse_edition` y `parse_movie` son funciones de parseo independientes de la red.
 
-### Validación
+### Modelo y normalización
 
-- Tres niveles con significado propio (ADR-019): ERROR = estado imposible / bug;
-  AVISO = discrepancia con la fuente; INFO = raro pero legítimo.
-- **La validación nunca detiene el proceso** ni repara datos. Señala.
-- **Los empates son reales y correctos** (ed. 5, 17, 28, 39). No los "arregles": eso sería
-  inventar. Igual con las 3 categorías sin ganador marcado.
-- Al comparar etiquetas de categoría, **canonicaliza los dos lados**. La ficha y la
-  edición usan el nombre de su año.
-
-### Modelo de datos y base de datos
-
-- Identidad de película = `slug` (ADR-002). El título **nunca** identifica: hay 12 títulos
-  en slugs distintos.
-- Construye nominaciones con `model.make_nomination()`: canonicaliza y rellena
-  `category_raw`.
-- `counts` **nunca** se escribe a mano; `storage.save()` lo recalcula. Si cambia la
-  estructura del documento, sube `storage.SCHEMA_VERSION`.
-- La única lista que se ordena es `movies` (por título sin acentos ni mayúsculas). **Nunca
-  uses `locale.strxfrm`**: el orden no sería determinista entre máquinas. Las listas de
-  datos de una película conservan el orden de la fuente.
-- `credited` significa tres cosas distintas según la categoría (`credited_kinds.py`).
-  El importador **se niega** a adivinar una categoría desconocida; no añadas un valor por
-  defecto.
+- Construye nominaciones utilizando las funciones y reglas existentes en `model.py`.
+- No escribas manualmente valores derivados que el almacenamiento ya calcula, como los contadores gestionados por `storage.save()`.
+- No alteres el orden de los datos sin una necesidad explícita. Mantén el orden determinista definido por el proyecto.
+- No inventes un tipo de crédito por defecto para categorías desconocidas. Revisa `credited_kinds.py` y los tests relacionados.
 - `persons.py` es una decisión humana, no una función. Solo se fusionan grafías **iguales**
   tras normalizar; los parecidos se reportan, no se fusionan.
-- En SQLite: `STRICT` en todas las tablas, `PRAGMA foreign_keys = ON` en cada conexión,
-  SQL siempre parametrizado (`?`), nunca f-strings. `schema.sql` es la fuente del esquema.
-- La importación **reconstruye** la base entera. Tras un fallo queda válida pero **vacía**;
-  la recuperación es reimportar.
 
-### Cambios innecesarios
+### SQLite
 
-- Módulos planos, sin subpaquetes (ADR-005). Sin ORM, sin CLI en el scraper, sin
-  `lxml`, sin Pydantic, sin linter. Cada ausencia está justificada en `docs/architecture.md`.
-- **No añadas dependencias, patrones ni abstracciones** sin justificarlas y sin aprobación.
-  100 líneas claras antes que 500 de abstracción.
-- No "mejores" los datos que son incorrectos en la fuente publica. Se conservan y se documentan.
+- `src/goya_scraper/schema.sql` es la fuente de verdad del esquema SQL.
+- Mantén las restricciones de integridad, las claves foráneas y el modo `STRICT` establecido.
+- Activa las claves foráneas en cada conexión, como exige el diseño actual.
+- Utiliza consultas parametrizadas; no interpolaciones de valores en SQL.
+- Conserva la reproducibilidad y el orden determinista de la importación.
+- Si cambia el esquema, revisa `DB_SCHEMA_VERSION`, los tests, `docs/database.md` y la validación cruzada con el JSON.
+- No afirmes que la base anterior queda intacta si falla la importación. Consulta y respeta la semántica de recuperación documentada.
 
 ---
 
-## 4. Errores y aprendizajes
+## 3. Tests, fixtures y datos de prueba
 
-Todo lo que sigue pasó en este proyecto o está fijado por un test que lo fija:
+Los tests deben ser reproducibles y no depender de Internet.
 
-1. **Expectativas inventadas en los tests.** Se colaron `133` minutos en vez de `115`, un
-   título mal copiado. **Un valor esperado se lee de la fixture, nunca de la memoria.** Si un
-   test falla, comprueba primero la fixture.
-2. **Comparar la categoría canónica contra la etiqueta cruda de la ficha** produjo
-   conflictos fantasma. Canonicaliza ambos lados antes de comparar
-   (`test_validate.py::TestRenamedAwardsAreNotFalseConflicts`).
-3. **Un `CHECK` corrupto por bytes de control** (escritura de un fichero largo de una vez)
-   creaba el esquema, aceptaba lo bueno y rechazaba lo malo: parecía correcto hasta que
-   llegaban datos reales. Por eso los tests de esquema **insertan datos malos de verdad**,
-   y uno lee los bytes de `schema.sql` buscando `\x00`.
-4. **Tratar un 404 como `error`.** 404 → `not_found`; el resto de fallos HTTP/red → `error`.
-   El JSON tiene que distinguirlo.
-5. **`award_categories` como `[]` en vez de `None`.** Hace que un dataset viejo parezca
-   limpio sin serlo (ADR-023).
-6. **Dormir entre peticiones en un acierto de caché** convertía una ejecución cacheada en
-   34 minutos de no hacer nada. Hay un test que falla si duerme (ADR-017).
-7. **Afirmar que un fallo de importación dejaba intacta la base anterior.** Era falso:
-   queda vacía. Corregido en ADR-035, con un test que fija el comportamiento real.
-8. **Partir `producers_raw` por comas** rompe el 100 % de los valores con paréntesis. Es
-   un string opaco a propósito.
-9. **Sobre-separar nombres** produce `["Carmen", "Lola"]` para *Carmen y Lola*. Riesgo
-   aceptado: separar de más daña mucho menos que no separar.
-10. **`cache_filename` no es inyectivo**: `/a/b` y `/a_b` colisionan. Irrelevante para este
-    sitio y documentado; no afirmes lo contrario.
-11. **Un informe que solo da números obliga a volver a la web.** Nombrar la categoría en
-    disputa es lo que hace útil el validador (ADR-020).
-12. **Rutas mal escritas al escribir ficheros.** Verifica siempre la ruta destino antes de
-    escribir; el usuario ya paró uno de estos casos.
+- Ejecuta los tests desde el entorno virtual del proyecto.
+- Utiliza `tests/fixtures/` para representar HTML real y reproducir las particularidades de la fuente.
+- Antes de cambiar un parser por un fallo de test, inspecciona la fixture y determina si el error está en el código, en el test o en el HTML de referencia.
+- No inventes valores esperados de memoria. Obténlos de las fixtures o de una fuente verificable.
+- Cuando cambie la estructura HTML, actualiza la fixture de forma controlada y conserva únicamente el fragmento necesario para reproducir el caso.
+- Usa `tmp_path` u otros mecanismos de aislamiento existentes para que los tests no sobrescriban los datos reales.
+- En SQLite, comprueba el comportamiento de las restricciones insertando datos válidos e inválidos; contar tablas o inspeccionar nombres no basta.
+- Para nuevas reglas de normalización, prueba tanto los casos que deben transformarse como los que deben conservarse sin cambios.
+- No elimines un test únicamente porque falle tras la implementación. Determina primero qué comportamiento debe considerarse correcto.
 
 ---
 
-## 5. Workflow
+## 4. Workflow
 
 1. **Entender la tarea.** Qué cambia y por qué. Si el dato no existe en la fuente, para y
    escribe un ADR.
-2. **Consultar la documentación** de la tabla de la sección 2, y `docs/decisions.md` si
+2. **Consultar la documentación** de la tabla de la sección 1, y `docs/decisions.md` si
    tocas una decisión existente.
 3. **Inspeccionar código y tests** de la zona, más los fixtures reales.
 4. **Cambio mínimo.** La fase previa a la nueva: test primero, luego la función pura,
@@ -191,18 +146,52 @@ Todo lo que sigue pasó en este proyecto o está fijado por un test que lo fija:
 7. **Documentar** si el cambio lo requiere: actualiza el `docs/` correspondiente y añade un
    ADR si cambia una decisión.
 
+Comandos, desde la raíz del proyecto:
+
+```bash
+.venv/bin/python -m pytest                    # seguro: sin red
+.venv/bin/python -m goya_scraper.import_db    # seguro: lee el JSON local
+.venv/bin/python -m goya_scraper.db_validate  # seguro: solo lee
+.venv/bin/python -m goya_scraper              # LEE ANTES DE EJECUTAR
+```
+
+El primero es el que se usa casi siempre. **El cuarto no tiene equivalente a "probarlo
+rápido"**: recorre el sitio entero, genera muchísimas peticiones y tarda bastante. Solo
+cuando la tarea sea deliberadamente actualizar los datos, nunca para comprobar un cambio
+de código. Todo lo que no esté en caché hay que volver a pedirlo al servidor, así que
+aguanta hasta que termine en lugar de interrumpirlo.
+
 ---
 
-## 6. Cambios que requieren especial cuidado
+## 5. Cambios que requieren especial cuidado
 
-| Zona                      |     | Qué revisar antes de tocar                                                                                                                                   | Dónde                                                       |
-| ------------------------- | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- |
-| **Scraping**              |     | ¿Sigue siendo educado? ¿un fallo individual sigue sin parar el proceso? ¿se guarda tras cada edición? ¿sigue sin reintentar 404/403/429?                     | `docs/scraping.md`, `docs/decisions.md` (ADR-010, 016, 017) |
-| **Fuentes**               |     | ¿El dato está realmente en la fuente? ¿introduces una fuente externa? ¿cambias un selector porque el HTML cambió?                                            | `docs/sources.md`, ADR-001, 004                             |
-| **Modelo de datos**       |     | ¿Subes `SCHEMA_VERSION`? ¿`to_dict()`/`from_dict()` siguen simétricos? ¿conservas el valor crudo?                                                            | `docs/data-model.md`                                        |
-| **Base de datos**         |     | ¿Es una tabla nueva justificada por datos medidos? ¿`STRICT`, FK y clave natural siguen()? ¿los ids los sigue asignando el importador en orden determinista? | `docs/database.md`, ADR-025 a 038, `schema.sql`             |
-| **Validación**            |     | ¿Es realmente un ERROR o un AVISO? ¿el mensaje nombra el conflicto? ¿la comprobación no repara nada?                                                         | `docs/validation.md`, ADR-019, 020                          |
-| **Frontera scraper ↔ BD** |     | El scraper **no** puede importar `sqlite3`. Hay un test (`test_the_scraper_does_not_import_the_database`) que lo falla.                                      | ADR-036                                                     |
+| Zona | Qué revisar antes de tocar | Dónde consultar |
+|---|---|---|
+| **HTTP o caché** | Reintentos, timeout, rate limit, recuperación e incrementalidad | `docs/scraping.md`, ADR-010, 016, 017 |
+| **Fuentes** | ¿El dato está realmente en la fuente? ¿introduces una fuente externa? ¿cambias un selector porque el HTML cambió? | `docs/sources.md`, ADR-001, 004 |
+| **Modelo de datos** | ¿Subes `SCHEMA_VERSION`? ¿`to_dict()`/`from_dict()` siguen simétricos? ¿conservas el valor crudo? | `docs/data-model.md` |
+| **Base de datos** | ¿Es una tabla nueva justificada por datos medidos? ¿`STRICT`, FK y clave natural siguen? ¿los ids los sigue asignando el importador en orden determinista? | `docs/database.md`, ADR-025 a 038, `schema.sql` |
+| **Validación** | ¿Es realmente un ERROR o un AVISO? ¿el mensaje nombra el conflicto? ¿la comprobación no repara nada? | `docs/validation.md`, ADR-019, 020 |
+| **Frontera scraper ↔ BD** | El scraper **no** puede importar `sqlite3` | ADR-036 y el test `test_the_scraper_does_not_import_the_database` |
+
+Si una modificación afecta a varias capas, la especificación debe enumerarlas y establecer las comprobaciones correspondientes.
+
+---
+
+## 6. Documentación y decisiones
+
+Mantén cada documento dentro de su responsabilidad:
+
+- `README.md`: propósito, instalación, uso y navegación.
+- `AGENTS.md`: reglas de trabajo, invariantes y proceso para agentes de IA.
+- `docs/`: descripción técnica del comportamiento implementado y sus contratos.
+- `docs/decisions.md`: motivos de las decisiones relevantes y alternativas consideradas.
+
+Actualiza los documentos existentes en vez de duplicar su contenido en otros ficheros.
+
+Un ADR nuevo está justificado cuando cambia una decisión arquitectónica o de dominio relevante, no por cada cambio de código. Cuando una decisión sustituya a otra, conserva la historia e indica claramente cuál queda vigente.
+
+No mantengas en `AGENTS.md` cifras de estado, listas exhaustivas de anomalías ni narraciones detalladas de incidentes. Ese contenido pertenece al informe de validación o a la documentación de desarrollo. Los *procedimientos* —qué comprobar, cuándo y contra qué— sí pertenecen aquí: no son estado, y un agente no puede deducirlos por sí solo.
 
 ---
 
@@ -210,12 +199,32 @@ Todo lo que sigue pasó en este proyecto o está fijado por un test que lo fija:
 
 Una tarea está terminada cuando:
 
-- [ ] `.venv/bin/python -m pytest` pasa (394 tests, sin red).
-- [ ] Si cambia el JSON: `storage.SCHEMA_VERSION` subido y `docs/data-model.md` al día.
-- [ ] Si cambia el esquema: `schema.sql` actualizado, `DB_SCHEMA_VERSION` subido,
-  `import_db` + `db_validate` con **0 errores** y `database.md` cambiado.
-- [ ] La validación del JSON no ha ganado ningún error nuevo (0 errores; los avisos actuales están
-  documentados en `docs/validation.md`).
-- [ ] Hay un test que falla si el cambio se deshace.
-- [ ] Ningún fichero fuera del proyecto ha sido tocado.
-- [ ] Las cifras que aparezcan en `README.md` o `docs/` se han actualizado si han cambiado.
+- [ ] Las pruebas pasan y los resultados se han comprobado
+- [ ] La implementación satisface los criterios de aceptación
+- [ ] No se han introducido regresiones ni errores de validación
+- [ ] Los invariantes siguen cumpliéndose o se ha aprobado explícitamente su modificación
+- [ ] Los documentos técnicos afectados están actualizados.
+- [ ] Las decisiones arquitectónicas modificadas están documentadas.
+- [ ] El cambio se mantiene dentro del alcance acordado
+- [ ] Las pruebas o verificaciones pendientes, limitaciones y riesgos se declaran explícitamente.
+
+Y, cuando el cambio toque el dato o el esquema, estos cuatro:
+
+- [ ] Si cambia la estructura del documento JSON, `SCHEMA_VERSION` está subido.
+- [ ] Si cambia el esquema SQL, `DB_SCHEMA_VERSION` está subido.
+- [ ] `import_db` y `db_validate` terminan con cero errores.
+- [ ] La validación del JSON no ha ganado ningún error nuevo.
+
+Si alguna comprobación no puede ejecutarse, indica cuál, por qué y qué evidencia queda pendiente. No afirmes que una prueba ha pasado si no se ha ejecutado.
+
+---
+
+## 8. Estilo de implementación
+
+- Nombres de código y docstrings en inglés; documentación explicativa en español.
+- Funciones pequeñas y responsabilidades claras.
+- Comentarios para explicar decisiones o motivos no evidentes, no para repetir el código.
+- Dependencias y abstracciones mínimas.
+- Sin ORM, CLI adicional, linter ni nuevas dependencias salvo que una tarea aprobada justifique el cambio.
+
+Ante varias soluciones correctas, elige la que preserve mejor la arquitectura existente, sea más fácil de verificar y requiera menos complejidad accidental.
