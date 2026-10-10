@@ -32,17 +32,8 @@ Por cada edición de los Goya:
 Todo con `requests` + `BeautifulSoup` sobre HTML. **Sin APIs externas.**
 
 Además, y como paso aparte, convierte el JSON en una **base de datos SQLite** con un modelo
-relacional normalizado, para poder consultar los Goya con SQL:
-
-```bash
-python -m goya_scraper.import_db      # movies.json -> goya.db
-python -m goya_scraper.db_validate    # comprueba una contra el otro
-sqlite3 data/goya.db                  # a preguntar
-```
-
-El scraper **no sabe que existe la base de datos**. Son dos mitades que no se mezclan, y
-`movies.json` sigue siendo la fuente de verdad: `goya.db` se puede borrar y reconstruir
-cuando quieras. Está en [`docs/database.md`](docs/database.md).
+relacional normalizado, para poder consultar los Goya con SQL: ver *Para consultar los
+datos*, más abajo.
 
 ---
 
@@ -60,9 +51,8 @@ pip install -e ".[dev]"
 Requiere **Python 3.10+**. Dependencias: `requests`, `beautifulsoup4` y `pytest`.
 
 > **No necesitas ejecutar el scraper para usar los datos.** `data/movies.json` está
-> versionado en el repositorio: al clonar ya tienes las 1678 películas, sus 4050
-> nominaciones y sus 1027 premios. El scraper solo hace falta para *actualizar* esos
-> datos cuando la Academia publique una edición nueva.
+> versionado en el repositorio, así que al clonar ya lo tienes. El scraper solo hace
+> falta para *actualizar* esos datos cuando la Academia publique una edición nueva.
 
 ---
 
@@ -95,8 +85,7 @@ Sin argumentos, sin opciones, sin CLI. Eso lo hace todo.
 | Reanudada tras un corte        | solo lo que faltaba | lo que falte |
 
 > **Lee esto antes de lanzarlo:** recorre el sitio entero, genera muchísimas peticiones y
-> tarda bastante. No es una forma rápida de "probar el código": para eso están los tests,
-> que no tocan la red. Si lo lanzas, deja que termine en lugar de interrumpirlo.
+> tarda bastante. No es una forma rápida de "probar el código": para eso están los tests, que no tocan la red. Si lo lanzas, deja que termine en lugar de interrumpirlo.
 
 > **Estado: proyecto terminado.** El comando recorre las 40 ediciones, escribe
 > `data/movies.json` y valida el resultado.
@@ -209,7 +198,8 @@ Las dos funciones de parseo **no hacen peticiones**: reciben HTML y devuelven da
 eso los tests no necesitan internet ni mocks.
 
 La tercera línea son los módulos de base de datos, y **no se importan entre sí con la
-primera**: `run.py` no sabe que existe SQLite. Lo comprueba un test.
+primera**: `run.py` no sabe que existe SQLite. Lo comprueba el test
+`test_the_scraper_does_not_import_the_database`.
 
 ---
 
@@ -262,7 +252,7 @@ tablas no dice nada; comprobar que una duración de `'105 años'` falla sí.
 | [`docs/validation.md`](docs/validation.md)     | Qué se comprueba y qué se ha encontrado                          |
 | [`docs/database.md`](docs/database.md)         | El modelo relacional, el esquema, los índices y las consultas    |
 | [`docs/decisions.md`](docs/decisions.md)       | Registro de decisiones (38 ADR)                                  |
-| [`AGENTS.md`](AGENTS.md)                       | Cómo trabajar en el proyecto: invariantes, tests y proceso        |
+| [`AGENTS.md`](AGENTS.md)                       | Cómo trabajar en el proyecto: invariantes, tests y proceso       |
 
 ---
 
@@ -286,7 +276,7 @@ Este proyecto se hizo con algunas reglas que no se negocian:
 
 ## Lo que no está
 
-Decisiones tomadas de forma consciente, documentadas en
+Decisiones tomadas de forma consciente, todas ellas en
 [`docs/decisions.md`](docs/decisions.md):
 
 - **Sin año de película.** La fuente no lo tiene y no se deriva.
@@ -294,7 +284,7 @@ Decisiones tomadas de forma consciente, documentadas en
 - **Sin IMDb, Rotten Tomatoes ni Filmaffinity.** IMDb está **prohibida por su
   `robots.txt`**; Filmaffinity está tras Cloudflare; Rotten Tomatoes exigiría un sistema
   de matching desproporcionado para el beneficio.
-- **Sin base de datos dentro del scraper.** Hay base de datos, pero **fuera** de él: `import_db` cuelga de `storage` y el recorrido de descarga no la importa. SQLite se consulta con `sqlite3 data/goya.db`.
+- **Sin base de datos dentro del scraper.** La hay, pero fuera: `import_db` cuelga de `storage` y el recorrido de descarga no la importa.
 - **Sin ORM.** `sqlite3` de la librería estándar y SQL a mano. Un ORM escondería
   precisamente lo que esta fase enseña: las claves foráneas, los `JOIN` y los índices.
 - **Sin CLI.** Se ejecuta con `python -m goya_scraper`. Las dos órdenes de la base de datos
@@ -327,8 +317,8 @@ donde la web se contradice consigo misma. Ninguna es un error del scraper: las 4
 nominaciones coinciden **1678/1678** con los contadores de la Academia. Ver
 [`docs/validation.md`](docs/validation.md).
 
-**Base de datos: 13 tablas, 0 errores.** 6033 personas (de 6130 grafías), 4050
-nominaciones, 5277 créditos. La validación cruzada entre `movies.json` y `goya.db` da
+**Base de datos: 0 errores.** 6033 personas (de 6130 grafías), 4050 nominaciones, 5277
+créditos. La validación cruzada entre `movies.json` y `goya.db` da
 **0 errores, 2 avisos, 4 informativos**, y `PRAGMA integrity_check` da `ok`. Ver
 [`docs/database.md`](docs/database.md).
 
