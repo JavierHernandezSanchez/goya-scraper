@@ -131,13 +131,11 @@ Los tests deben ser reproducibles y no depender de Internet.
 
 ## 4. Workflow
 
-1. **Entender la tarea.** Qué cambia y por qué. Si el dato no existe en la fuente, para y
-   escribe un ADR.
+1. **Entender la tarea.** Identifica qué cambia y por qué. Un campo que no está en la fuente se deja en `null`, sin más. Escribe un ADR cuando descartes una alternativa plausible, o cuando cambies una decisión de arquitectura o de dominio.
 2. **Consultar la documentación** de la tabla de la sección 1, y `docs/decisions.md` si
    tocas una decisión existente.
 3. **Inspeccionar código y tests** de la zona, más los fixtures reales.
-4. **Cambio mínimo.** La fase previa a la nueva: test primero, luego la función pura,
-   luego el cableado en `run.py` (`docs/development.md`).
+4. **Cambio mínimo.** Implementa la solución más sencilla que resuelva la tarea, siguiendo el flujo de desarrollo definido en `docs/development.md` y adaptándolo al tipo de cambio.
 5. **Ejecutar:** `pytest`. Y, si tocaste datos o esquema:
    `import_db` + `db_validate`, más la validación del JSON.
 6. **Revisar el resultado:** lee el informe de validación. **0 errores** es el estado
@@ -165,14 +163,14 @@ aguanta hasta que termine en lugar de interrumpirlo.
 
 ## 5. Cambios que requieren especial cuidado
 
-| Zona | Qué revisar antes de tocar | Dónde consultar |
-|---|---|---|
-| **HTTP o caché** | Reintentos, timeout, rate limit, recuperación e incrementalidad | `docs/scraping.md`, ADR-010, 016, 017 |
-| **Fuentes** | ¿El dato está realmente en la fuente? ¿introduces una fuente externa? ¿cambias un selector porque el HTML cambió? | `docs/sources.md`, ADR-001, 004 |
-| **Modelo de datos** | ¿Subes `SCHEMA_VERSION`? ¿`to_dict()`/`from_dict()` siguen simétricos? ¿conservas el valor crudo? | `docs/data-model.md` |
-| **Base de datos** | ¿Es una tabla nueva justificada por datos medidos? ¿`STRICT`, FK y clave natural siguen? ¿los ids los sigue asignando el importador en orden determinista? | `docs/database.md`, ADR-025 a 038, `schema.sql` |
-| **Validación** | ¿Es realmente un ERROR o un AVISO? ¿el mensaje nombra el conflicto? ¿la comprobación no repara nada? | `docs/validation.md`, ADR-019, 020 |
-| **Frontera scraper ↔ BD** | El scraper **no** puede importar `sqlite3` | ADR-036 y el test `test_the_scraper_does_not_import_the_database` |
+| Zona                      | Qué revisar antes de tocar                                                                                                                                 | Dónde consultar                                                   |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| **HTTP o caché**          | Reintentos, timeout, rate limit, recuperación e incrementalidad                                                                                            | `docs/scraping.md`, ADR-010, 016, 017                             |
+| **Fuentes**               | ¿El dato está realmente en la fuente? ¿introduces una fuente externa? ¿cambias un selector porque el HTML cambió?                                          | `docs/sources.md`, ADR-001, 004                                   |
+| **Modelo de datos**       | ¿Subes `SCHEMA_VERSION`? ¿`to_dict()`/`from_dict()` siguen simétricos? ¿conservas el valor crudo?                                                          | `docs/data-model.md`                                              |
+| **Base de datos**         | ¿Es una tabla nueva justificada por datos medidos? ¿`STRICT`, FK y clave natural siguen? ¿los ids los sigue asignando el importador en orden determinista? | `docs/database.md`, ADR-025 a 038, `schema.sql`                   |
+| **Validación**            | ¿Es realmente un ERROR o un AVISO? ¿el mensaje nombra el conflicto? ¿la comprobación no repara nada?                                                       | `docs/validation.md`, ADR-019, 020                                |
+| **Frontera scraper ↔ BD** | El scraper **no** puede importar `sqlite3`                                                                                                                 | ADR-036 y el test `test_the_scraper_does_not_import_the_database` |
 
 Si una modificación afecta a varias capas, la especificación debe enumerarlas y establecer las comprobaciones correspondientes.
 

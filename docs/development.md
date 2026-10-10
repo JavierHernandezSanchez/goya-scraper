@@ -300,9 +300,12 @@ parseo: basta con mapearla.
 
 ### Añadir un campo que no está en la fuente
 
-Antes de nada, comprobar que está en el HTML. Si no está, **no lo implementes**: escribe
-un ADR en `docs/decisions.md` explicando por qué no. Fue lo que hicimos con el año, los
-géneros y las fuentes externas.
+Antes de nada, comprobar que está en el HTML. Si no está, **no lo implementes**: déjalo en
+`null`.
+
+Eso no es por sí solo un ADR. El ADR hace falta cuando había una forma plausible de
+obtenerlo y has decidido no hacerlo: derivarlo, inferirlo o buscarlo fuera. Ahí es donde el
+registro sirve, porque documenta la opción que alguien te va a proponer.
 
 ---
 
