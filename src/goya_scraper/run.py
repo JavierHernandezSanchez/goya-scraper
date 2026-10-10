@@ -6,6 +6,8 @@ The whole flow is here, reading top to bottom. Nothing else orchestrates.
 import logging
 import sys
 
+from pathlib import Path
+
 from . import storage
 from .http_client import HttpClient, HttpError
 from .model import DETAIL_ERROR, DETAIL_NOT_FOUND, DETAIL_OK, Movie, Nomination
@@ -37,6 +39,42 @@ def discover_editions(client: HttpClient) -> list[tuple[int, int]]:
     return editions
 
 
+#: Where the posters live, relative to the project root. One constant for both
+#: the directory on disk and the path recorded in the JSON, so the two cannot
+#: drift apart. The recorded value is always the relative form: an absolute
+#: path in movies.json would tie the dataset to whoever downloaded it.
+POSTER_SUBDIR = "data/posters"
+POSTER_DIR = Path(POSTER_SUBDIR)
+
+
+def poster_path_for(slug: str, extension: str) -> str:
+    """Where the poster for a film goes, as stored in movies.json."""
+    return f"{POSTER_SUBDIR}/{slug}{extension}"
+
+
+def fetch_poster(client: HttpClient, movie: Movie) -> None:
+    """Download the poster if the page named one, and record where it went.
+
+    219 of the 1678 films have no poster published, which is a fact about the
+    site and not a failure: poster_url stays None and nothing is asked for.
+
+    A download that fails is not fatal either. The film keeps its nominations
+    and the poster is simply missing, which is exactly what poster_path being
+    None says. The run must not stop over one image.
+    """
+    if not movie.poster_url:
+        return
+
+    try:
+        extension = client.download(movie.poster_url, POSTER_DIR, movie.slug)
+    except HttpError as exc:
+        movie.issues.append(f"could not fetch poster: {exc}")
+        log.warning("%s: poster not downloaded: %s", movie.slug, exc)
+        return
+
+    movie.poster_path = poster_path_for(movie.slug, extension) if extension else None
+
+
 def fetch_movie(client: HttpClient, slug: str, nominations: list[Nomination]) -> Movie:
     """Build a Movie, including what happened when the page could not be read.
 
@@ -58,6 +96,8 @@ def fetch_movie(client: HttpClient, slug: str, nominations: list[Nomination]) ->
         movie = Movie(slug=slug, detail_status=status)
         movie.issues.append(f"could not fetch movie page: {exc}")
         log.error("%s: %s", slug, exc)
+
+    fetch_poster(client, movie)
 
     movie.nominations = nominations
     return movie

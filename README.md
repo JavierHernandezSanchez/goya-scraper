@@ -25,9 +25,10 @@ Por cada edición de los Goya:
 1. Lee la página de nominaciones y extrae todas las categorías, con sus nominados y
    **quién ganó**.
 2. Visita la ficha de cada película nominada y extrae país, dirección, guion, reparto,
-   sinopsis, duración y título original.
-3. Agrega las nominaciones de esa edición a la película correspondiente.
-4. Escribe `data/movies.json`.
+   sinopsis, duración, título original y la URL del cartel.
+3. Descarga el cartel de las películas que lo tienen a `data/posters/`.
+4. Agrega las nominaciones de esa edición a la película correspondiente.
+5. Escribe `data/movies.json`.
 
 Todo con `requests` + `BeautifulSoup` sobre HTML. **Sin APIs externas.**
 
@@ -80,7 +81,7 @@ Sin argumentos, sin opciones, sin CLI. Eso lo hace todo.
 
 | Ejecución                      | Peticiones          | Tiempo       |
 | ------------------------------ | ------------------- | ------------ |
-| Primera vez, todo el histórico | 1719                | ~35 min      |
+| Primera vez, todo el histórico | 3178                | ~64 min      |
 | Segunda vez                    | **0**               | ~3 s         |
 | Reanudada tras un corte        | solo lo que faltaba | lo que falte |
 
@@ -185,9 +186,10 @@ goya-scraper/
 │   ├── schema.sql       # 13 tablas, 10 índices, 1 vista
 │   ├── import_db.py     # movies.json -> goya.db
 │   └── db_validate.py   # comprueba la base contra el JSON
-├── tests/               # 394 tests, sin internet
+├── tests/               # 425 tests, sin internet
 ├── data/movies.json    # el resultado. Fuente de verdad, versionado en el repo
 ├── data/goya.db        # la copia consultable (se regenera, no se versiona)
+├── data/posters/      # un cartel por película (no se versiona)
 ├── cache/              # HTML crudo (no se versiona)
 ├── LICENSE             # MIT
 ├── AGENTS.md           # reglas de trabajo e invariantes del proyecto
@@ -251,7 +253,7 @@ tablas no dice nada; comprobar que una duración de `'105 años'` falla sí.
 | [`docs/development.md`](docs/development.md)   | Entorno, ejecución, tests, cómo añadir cosas                     |
 | [`docs/validation.md`](docs/validation.md)     | Qué se comprueba y qué se ha encontrado                          |
 | [`docs/database.md`](docs/database.md)         | El modelo relacional, el esquema, los índices y las consultas    |
-| [`docs/decisions.md`](docs/decisions.md)       | Registro de decisiones (38 ADR)                                  |
+| [`docs/decisions.md`](docs/decisions.md)       | Registro de decisiones (39 ADR)                                  |
 | [`AGENTS.md`](AGENTS.md)                       | Cómo trabajar en el proyecto: invariantes, tests y proceso       |
 
 ---
@@ -341,7 +343,7 @@ créditos. La validación cruzada entre `movies.json` y `goya.db` da
 | Importación reproducible    | Dos importaciones del mismo JSON → la misma base de datos                 |
 | Importación atómica         | Un fallo deshace todas las filas de esa ejecución                         |
 | JSON ↔ SQLite               | 0 errores, 2 avisos, 4 informativos                                       |
-| Tests                       | **394**, ninguno toca la red                                              |
+| Tests                       | **425**, ninguno toca la red                                              |
 
 ### Los 12 avisos, en una frase
 

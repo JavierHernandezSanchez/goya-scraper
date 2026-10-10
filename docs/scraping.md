@@ -99,7 +99,42 @@ Coste: **1678 peticiones**.
 
 ---
 
-## 5. Ensamblado
+## 5. Descargar el cartel
+
+De las 1459 películas que lo tienen, se pide su imagen a `data/posters/{slug}.{ext}`.
+
+```
+https://www.premiosgoya.com/wp-content/uploads/.../poster/2150/EL_BUEN_PATRON_76x101_baja-320x457.jpg
+```
+
+El selector es `img.attachment-cartel` **dentro de `article.pelicula`**, no `img`: la
+página lleva además los iconos de Twitter, Facebook y compañía, y un `img` a secas los
+cogería por cartel.
+
+Del `srcset` no se extrae nada: `src` **es** la mayor resolución, así que no hay nada que
+elegir.
+
+**El directorio es la caché.** Si el fichero ya está y no está vacío, no se pide nada. Es
+lo que hace que una segunda ejecución no cueste nada, igual que `cache/` con las páginas.
+
+**Un 200 no se acepta sin comprobar.** Se mira que los bytes empiecen por una firma de
+imagen conocida, y de ahí sale también la extensión. El sitio publica el mismo formato
+como `.jpg` y como `.jpeg`, así que nombrar por la URL daría dos ficheros para lo mismo;
+y una página puede responder 200 con un aviso de error, que acabaría guardado como una
+imagen rota que la siguiente ejecución reutilizaría.
+
+Coste: **1459 peticiones** más, de 1719 a **3178** en total. Con el rate limit de siempre,
+del orden de media hora más. Las 219 películas sin cartel no se piden.
+
+### Un fallo no para nada
+
+Un cartel que falla deja su `poster_path` en `null` y un aviso en `data_quality.issues`.
+La película conserva sus nominaciones, que valen más que su cartel. Es el mismo criterio
+que el de una ficha ilegible (ADR-014).
+
+---
+
+## 6. Ensamblado
 
 Las nominaciones de una edición se agrupan por `slug` y se fusionan con la ficha:
 
@@ -125,7 +160,8 @@ sumarían los totales.
 | Espera entre reintentos | 2 s, 4 s, 8 s | Espera creciente. |
 | `User-Agent` | `goya-scraper/0.1 (+https://github.com/JavierHernandezSanchez/goya-scraper)` | Identificable, con contacto. |
 
-**Total estimado la primera vez:** 1719 × 1.2 s ≈ **35 minutos**.
+**Total estimado la primera vez:** 3178 × 1.2 s ≈ **64 minutos** (1719 de páginas
+y 1459 de carteles).
 
 Los reintentos no están contados en esa cifra: solo suman si el servidor falla, y con
 una tasa de acierto del 100% no suman nada.
@@ -164,10 +200,13 @@ Consecuencias:
 El nombre del fichero es una versión sanitizada del `slug`; nunca se construye una ruta a
 partir de datos sin limpiar.
 
-Para forzar una resincronización completa:
+Los carteles tienen su propia caché, en `data/posters/`, y no comparten sitio con las
+páginas: el nombre lo decide el formato de los bytes, no la URL. Para una resincronización
+completa:
 
 ```bash
-rm -rf cache/
+rm -rf cache/            # vuelve a pedir las páginas
+rm -rf data/posters/     # vuelve a pedir los carteles
 ```
 
 ---
@@ -209,7 +248,7 @@ Resumido, porque enADR-010 está el porqué:
 5. Se fusiona lo nuevo con lo ya existente y se reescribe el fichero.
 
 ```bash
-python -m goya_scraper     # 1ª vez: ~35 min, 1719 peticiones
+python -m goya_scraper     # 1ª vez: ~64 min, 3178 peticiones
 python -m goya_scraper     # 2ª vez: segundos, 0 peticiones
 ```
 
@@ -227,7 +266,7 @@ siquiera es posible, porque el servidor no manda `ETag` ni `Last-Modified`.
 Esto no estaba en el diseño original y salió de ver el recorrido en marcha.
 
 **Guardamos `movies.json` después de cada edición, no solo al final.** El recorrido
-completo son ~35 minutos repartidos en 1719 peticiones. Guardar solo al final significa
+completo son ~64 minutos repartidos en 3178 peticiones. Guardar solo al final significa
 que un corte de red en la edición 30 tira las 29 anteriores. Cuesta ~40 escrituras de
 pocos MB: irrelevante frente a perder media hora de trabajo ajeno.
 

@@ -1022,3 +1022,63 @@ explicando qué falta.
 **Motivo.** Un esquema sin `STRICT` acepta `'105 años'` en una columna de duración y
 funciona hasta que alguien consulta. Un error al empezar es más barato que un dato
 corrupto tres fases después.
+
+---
+
+# Fase de carteles
+
+## ADR-039 — El cartel se guarda aparte, y son dos columnas porque una no basta
+
+**Contexto.** La ficha de cada película enseña un cartel. Nadie lo pedía y esta fase ha
+decidido que sí. Antes de escribir código, lo medido sobre las 1678 fichas reales:
+
+- **1459 películas tienen cartel. 219 no.** El 13% es un caso normal, no una incidencia.
+- El selector fiable es `img.attachment-cartel` dentro de `article.pelicula`. La página
+  lleva además los iconos de redes sociales, así que un `img` a los cogería.
+- `src` **es** la mayor resolución del `srcset`, así que no hay nada que elegir y no
+  hace falta parsear `srcset`.
+- El sitio publica el mismo formato como `.jpg` y como `.jpeg` (1422 y 20). Además hay 17
+  `.png`. Tres extensiones para dos formatos.
+
+**Opciones consideradas.**
+
+1. Guardar solo la URL del cartel.
+2. Guardar el binario en el JSON.
+3. Descargar la imagen a disco, guardar la ruta en el JSON, y dos campos.
+
+**Decisión.** Opción 3.
+
+- `poster_url`: lo que dice el sitio, en absoluto. `None` = la película no tiene cartel.
+- `poster_path`: dónde lo hemos dejado. `None` = no se pudo descargar.
+
+El directorio `data/posters/` **es** la caché: si el fichero ya está y no está vacío, no
+se pide nada. Eso es lo que hace que la segunda ejecución no cueste nada, igual que
+`cache/` con las páginas.
+
+**Motivo.** Dos campos y no uno porque son dos hechos distintos, y es exactamente la
+distinción que ADR-033 construyó para `reported_awards`. Con una sola columna, «la web no
+tiene cartel» y «no se pudo descargar» serían el mismo `null`, y esa es la confusión
+más cara del proyecto. También distingue un fallo de red de una ausencia real, que es lo
+mismo que hace `detail_status` con la ficha.
+
+Las dos extensiones del mismo formato se reducen a una porque **el nombre lo decide lo que
+llegan los bytes, no la URL**. El sitio puede servir `.jpg` y `.jpeg` del mismo JPEG; si
+nombráramos por la URL tendríamos dos ficheros para el mismo formato.
+
+**Consecuencias.**
+
+- **Un 200 no se da por bueno.** Se comprueba que los bytes empiecen por una firma de
+  imagen conocida. Una página puede responder 200 con un aviso de error, y llamarlo `.jpg`
+  dejaría una imagen rota que la siguiente ejecución reutilizaría como si fuera buena.
+- `SCHEMA_VERSION` 3 → 4, `DB_SCHEMA_VERSION` 1 → 2.
+- Las imágenes no se versionan. La ruta que apunta a cada una ya está en el JSON.
+- El coste: **+1459 peticiones**, de 1719 a 3178. Es un aumento del 85% sobre un servidor
+  al que este proyecto pretende ser educado. Se acepta porque el rate limit, el
+  `robots.txt` y los reintentos se aplican igual que a las páginas, y porque el resultado
+  es un dato que el sitio publica de forma visible. Lo que no se hace es descargar en
+  paralelo para hacerlo más rápido.
+
+**Lo que NO se hizo, y por qué.** Un campo `poster` no se añadió a `EXPECTED_FIELDS`. Eso
+haría que 219 películas cambiaran su `missing_fields` y con ellas las tablas de cobertura de
+`README.md` y `docs/validation.md`. El `null` de `poster_url` ya dice la verdad: no hay
+cartel, no es un campo pendiente.

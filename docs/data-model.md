@@ -32,7 +32,7 @@ escribe con `indent=2` y `ensure_ascii=False` para que los acentos se lean bien.
 
 ```json
 "_meta": {
-  "schema_version": 2,
+  "schema_version": 4,
   "source": "https://www.premiosgoya.com",
   "generated_at": "2026-10-03T22:45:12Z",
   "editions_scraped": [1, 2, 36],
@@ -48,7 +48,7 @@ escribe con `indent=2` y `ensure_ascii=False` para que los acentos se lean bien.
 
 | Campo              | Tipo        | Significado                                                                 |
 | ------------------ | ----------- | --------------------------------------------------------------------------- |
-| `schema_version`   | `int`       | Versión de este documento. Ahora mismo **2**. Sube si cambia la estructura. |
+| `schema_version`   | `int`       | Versión de este documento. Ahora mismo **4**. Sube si cambia la estructura. |
 | `source`           | `str`       | Único dominio del que proceden los datos (ADR-001).                         |
 | `generated_at`     | `str`       | Fecha y hora de la última escritura, formato ISO 8601 UTC.                  |
 | `editions_scraped` | `list[int]` | Ediciones ya descargadas. Base de la incrementalidad.                       |
@@ -116,7 +116,26 @@ porcentaje indica con qué frecuencia la fuente los tiene, medido sobre 173 pel�
 | `countries`        | `list[str]`     | 98%      | Normalizado. Ver abajo.                                                      |
 | `countries_raw`    | `str` \| `null` | 98%      | Valor literal de la fuente. **Se conserva siempre.**                         |
 | `duration_minutes` | `int` \| `null` | 30%      | La fuente dice `"105 minutos"`; se extrae el entero.                         |
+| `poster_url`       | `str` \| `null` | 87%      | URL absoluta del cartel. `null` en 219 de 1678: el sitio no lo publica.      |
+| `poster_path`      | `str` \| `null` | —        | Ruta relativa a la imagen. `null` si no se pudo descargar.                   |
 | `credits`          | `obj`           | —        | Ver abajo.                                                                   |
+
+### `poster_url` y `poster_path`: por qué dos campos
+
+Son dos hechos distintos, y confundirlos es el error que este proyecto ya pagó una vez
+(ADR-033):
+
+| Campo          | Pregunta que responde            | `null` significa        |
+| -------------- | -------------------------------- | ----------------------- |
+| `poster_url`   | ¿el sitio tiene ese cartel?      | No lo publica           |
+| `poster_path`  | ¿lo hemos descargado?            | No se pudo              |
+
+Con un solo campo, las 219 películas sin cartel y una descarga fallida serían el mismo valor.
+
+El **87%** sale de medir las 1678 fichas reales: 1459 tienen `img.attachment-cartel`. La
+extensión del fichero la deciden los bytes que llegan y no la URL, porque el sitio publica
+el mismo formato como `.jpg` y como `.jpeg`. Antes de guardar se comprueba la firma: un
+200 con un aviso de error dentro no se guarda. Todo en ADR-039.
 
 ### `countries`: el caso más delicado
 

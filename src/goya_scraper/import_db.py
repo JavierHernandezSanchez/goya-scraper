@@ -278,9 +278,9 @@ def _write_movies(connection, movies) -> dict[str, int]:
         reported = quality.get("reported_by_source")
         connection.execute(
             "INSERT INTO movie (id, slug, title, title_original, synopsis, "
-            "duration_minutes, producers_raw, countries_raw, detail_status, "
-            "reported_nominations, reported_awards) "
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "duration_minutes, producers_raw, countries_raw, poster_url, poster_path, "
+            "detail_status, reported_nominations, reported_awards) "
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             (
                 index,
                 movie["slug"],
@@ -290,6 +290,9 @@ def _write_movies(connection, movies) -> dict[str, int]:
                 movie.get("duration_minutes"),
                 (movie.get("credits") or {}).get("producers_raw"),
                 movie.get("countries_raw"),
+                # Absent in documents written before posters existed (schema v3).
+                movie.get("poster_url"),
+                movie.get("poster_path"),
                 quality.get("detail_status", "ok"),
                 # A page we never read has no reported counts. Zero would be a
                 # different claim: that the page said the film won nothing, which

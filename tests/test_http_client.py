@@ -11,41 +11,12 @@ from goya_scraper.http_client import (
     HttpError,
     RobotsDisallowed,
     cache_filename,
+    image_extension,
 )
 
 
-class FakeResponse:
-    def __init__(self, status=200, text="", encoding="utf-8"):
-        self.status_code = status
-        self.text = text
-        self.encoding = encoding
-        self.apparent_encoding = "utf-8"
-
-
-class FakeSession:
-    """A requests.Session stand-in that replays a scripted list of outcomes."""
-
-    def __init__(self, outcomes):
-        self.outcomes = list(outcomes)
-        self.headers = {}
-        self.calls = []
-
-    def get(self, url, timeout=None):
-        self.calls.append({"url": url, "timeout": timeout})
-        outcome = self.outcomes.pop(0) if self.outcomes else FakeResponse(200, "<html/>")
-        if isinstance(outcome, Exception):
-            raise outcome
-        return outcome
-
-
-def make_client(outcomes, tmp_path, **kwargs):
-    kwargs.setdefault("min_interval", 0)        # no sleeping in tests
-    kwargs.setdefault("retry_delays", (0, 0, 0))
-    kwargs.setdefault("respect_robots", False)   # tested on its own
-    kwargs.setdefault("cache_dir", tmp_path / "cache")
-    session = FakeSession(outcomes)
-    client = HttpClient(session=session, **kwargs)
-    return client, session
+# The HTTP doubles live in conftest.py so the poster tests can share them.
+from conftest import FakeResponse, FakeSession, make_client  # noqa: E402
 
 
 class TestCacheFilename:
@@ -268,3 +239,114 @@ class TestRobots:
         outcomes = [FakeResponse(503, "nope"), FakeResponse(200, "<html>x</html>")]
         client, _ = make_client(outcomes, tmp_path, respect_robots=True)
         assert client.get("/x/") == "<html>x</html>"
+
+
+# A minimal real image: the JPEG magic bytes and nothing else. Enough for the
+# format check, which only ever looks at the first few bytes.
+JPEG = b"\xff\xd8\xff\xe0" + b"\x00" * 20
+PNG = b"\x89PNG\r\n\x1a\n" + b"\x00" * 20
+
+
+class TestDownloadingImages:
+    """Binary downloads. Same fake session, so still no network."""
+
+    def test_the_bytes_land_in_the_directory(self, tmp_path):
+        client, _ = make_client([FakeResponse(200, content=JPEG)], tmp_path)
+        directory = tmp_path / "posters"
+
+        extension = client.download("https://x/cartel.jpg", directory, "el-buen-patron")
+
+        assert extension == ".jpg"
+        assert (directory / "el-buen-patron.jpg").read_bytes() == JPEG
+
+    def test_a_second_call_asks_for_nothing(self, tmp_path):
+        client, session = make_client([FakeResponse(200, content=JPEG)], tmp_path)
+        directory = tmp_path / "posters"
+
+        client.download("https://x/cartel.jpg", directory, "el-buen-patron")
+        calls = len(session.calls)
+        extension = client.download("https://x/cartel.jpg", directory, "el-buen-patron")
+
+        assert extension == ".jpg"
+        assert len(session.calls) == calls, "la segunda vez debe reutilizar el fichero"
+
+    def test_the_name_follows_the_bytes_not_the_url(self, tmp_path):
+        # The site serves the same format as .jpg and as .jpeg. Storing by
+        # content keeps the two down to the one that is really different.
+        client, _ = make_client([FakeResponse(200, content=PNG)], tmp_path)
+        directory = tmp_path / "posters"
+
+        extension = client.download("https://x/cartel.jpeg", directory, "una-peli")
+
+        assert extension == ".png"
+        assert (directory / "una-peli.png").exists()
+
+    def test_an_empty_file_does_not_count_as_downloaded(self, tmp_path):
+        directory = tmp_path / "posters"
+        directory.mkdir()
+        (directory / "cortada.jpg").write_bytes(b"")
+
+        client, session = make_client([FakeResponse(200, content=JPEG)], tmp_path)
+        extension = client.download("https://x/c.jpg", directory, "cortada")
+
+        assert extension == ".jpg", "un fichero vacio no vale como descarga previa"
+        assert len(session.calls) == 1
+
+    def test_a_200_that_is_not_an_image_is_refused(self, tmp_path):
+        # A page can answer 200 with an error notice. Writing that as .jpg
+        # would leave a broken image that the next run reuses.
+        client, _ = make_client(
+            [FakeResponse(200, content=b"<html>404</html>")], tmp_path
+        )
+        directory = tmp_path / "posters"
+
+        extension = client.download("https://x/c.jpg", directory, "falsa")
+
+        assert extension is None
+        assert not list(directory.glob("*"))
+
+    def test_a_404_is_not_written(self, tmp_path):
+        client, _ = make_client([FakeResponse(404, "")], tmp_path)
+        directory = tmp_path / "posters"
+
+        with pytest.raises(HttpError):
+            client.download("https://x/c.jpg", directory, "no-existe")
+
+        assert not list(directory.glob("*"))
+
+    def test_no_temporary_file_is_left_behind(self, tmp_path):
+        client, _ = make_client([FakeResponse(200, content=JPEG)], tmp_path)
+        directory = tmp_path / "posters"
+
+        client.download("https://x/c.jpg", directory, "limpia")
+
+        assert [p.name for p in directory.iterdir()] == ["limpia.jpg"]
+
+    def test_the_robots_rule_applies_to_images_too(self, tmp_path):
+        client, session = make_client(
+            [FakeResponse(200, text="User-agent: *\nDisallow: /wp-content/")],
+            tmp_path,
+            respect_robots=True,
+        )
+
+        with pytest.raises(RobotsDisallowed):
+            client.download("https://x/wp-content/c.jpg", tmp_path / "posters", "p")
+
+        assert not any(
+            c["url"].endswith(".jpg") for c in session.calls
+        ), "una URL prohibida no se pide"
+
+
+class TestImageExtension:
+    @pytest.mark.parametrize(
+        "payload,expected",
+        [
+            (JPEG, ".jpg"),
+            (PNG, ".png"),
+            (b"GIF89a...", ".gif"),
+            (b"<html>", None),
+            (b"", None),
+        ],
+    )
+    def test_format_is_read_from_the_content(self, payload, expected):
+        assert image_extension(payload) == expected

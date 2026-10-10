@@ -69,7 +69,7 @@ consultable el premio sin recorrer 1678 objetos.
 | `goya_edition` | 40 | Número de edición y año de ceremonia |
 | `category` | 31 | Nombre canónico y qué contiene su columna `credited` |
 | `country` | 48 | Países, con las erratas de la fuente |
-| `movie` | 1678 | Slug, títulos, duración, texto de productores, estado de la ficha |
+| `movie` | 1678 | Slug, títulos, duración, texto de productores, cartel, estado de la ficha |
 | `person` | 6033 | Una fila por persona real |
 | `person_alias` | 6130 | Cada grafía de la fuente y a qué persona apunta |
 | `movie_credit` | 10389 | Película ↔ persona con rol (`director`, `screenwriter`, `cast`) |
@@ -233,6 +233,17 @@ No hay tabla de productoras. El texto trae comas internas y gente dentro:
 
 Un split ingenuo rompe **los 297 valores con paréntesis, el 100%**. Partirlo sería
 inventar datos.
+
+### El cartel, en dos columnas
+
+`movie.poster_url` es lo que dice el sitio; `movie.poster_path` es dónde lo dejamos. Dos
+columnas porque son dos hechos: 219 de las 1678 películas no tienen cartel publicado, y eso no
+es lo mismo que una descarga que falló. Es la misma distinción de `reported_awards` en
+ADR-033, hecha con el esquema en vez de con el JSON.
+
+Ninguna de las dos se deriva ni se cuenta, así que las dos se guardan (ADR-031). La ruta
+es siempre **relativa a la raíz del proyecto**, nunca absoluta: una ruta absoluta ataría
+el dataset a la máquina que lo descargó.
 
 ### `STRICT` en todas las tablas
 

@@ -181,6 +181,13 @@ class Movie:
     countries: list[str] = field(default_factory=list)
     countries_raw: str | None = None
     duration_minutes: int | None = None
+    # The poster the page shows, and where we put it. Two fields on purpose:
+    # poster_url is what the site says (None = no poster published) and
+    # poster_path is ours (None = we could not download it). With one field
+    # the two "absent" cases would be indistinguishable, which is the mistake
+    # this project keeps having to guard against (ADR-033).
+    poster_url: str | None = None
+    poster_path: str | None = None
     credits: Credits = field(default_factory=Credits)
 
     # Counters the Academy publishes on the page itself, used to cross-check our
@@ -234,6 +241,8 @@ class Movie:
             "countries": self.countries,
             "countries_raw": self.countries_raw,
             "duration_minutes": self.duration_minutes,
+            "poster_url": self.poster_url,
+            "poster_path": self.poster_path,
             "credits": self.credits.to_dict(),
             "goya": {
                 "editions": self.editions,
@@ -287,6 +296,10 @@ class Movie:
             countries=list(payload.get("countries") or []),
             countries_raw=payload.get("countries_raw"),
             duration_minutes=payload.get("duration_minutes"),
+            # Absent in documents written before posters existed (schema v3),
+            # which is why this reads .get() and not a required key.
+            poster_url=payload.get("poster_url"),
+            poster_path=payload.get("poster_path"),
             credits=Credits(**(payload.get("credits") or {})),
             reported_nominations=reported.get("nominations", 0),
             reported_awards=reported.get("awards", 0),

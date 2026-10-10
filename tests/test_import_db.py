@@ -244,6 +244,44 @@ class TestWhatTheDocumentSays:
             "JOIN country c ON c.id = mc.country_id"
         ).fetchone()[0] == "España"
 
+    def test_the_poster_lands_in_its_own_columns(self, tmp_path):
+        """Two columns, because 'no poster published' and 'not downloaded' are
+        different facts and the table has to be able to say which (ADR-033)."""
+        movie = minimal_movie()
+        movie["poster_url"] = "https://www.premiosgoya.com/wp-content/uploads/c.jpg"
+        movie["poster_path"] = "data/posters/x.jpg"
+        path = tmp_path / "goya.db"
+        import_db.import_document(minimal_document([movie]), path)
+
+        connection = db.connect(path)
+        try:
+            row = connection.execute(
+                "SELECT poster_url, poster_path FROM movie"
+            ).fetchone()
+            assert row["poster_url"].endswith("/c.jpg")
+            assert row["poster_path"] == "data/posters/x.jpg"
+        finally:
+            connection.close()
+
+    def test_a_document_without_posters_still_imports(self, tmp_path):
+        """A document written before schema v4 has neither key at all."""
+        movie = minimal_movie()
+        movie.pop("poster_url", None)
+        movie.pop("poster_path", None)
+        path = tmp_path / "goya.db"
+        report = import_db.import_document(minimal_document([movie]), path)
+        assert report.ok
+
+        connection = db.connect(path)
+        try:
+            row = connection.execute(
+                "SELECT poster_url, poster_path FROM movie"
+            ).fetchone()
+            assert row["poster_url"] is None
+            assert row["poster_path"] is None
+        finally:
+            connection.close()
+
     def test_a_missing_page_means_no_reported_counts(self, tmp_path):
         """ADR-014: NULL is 'we never read it'; 0 is 'the page said zero'.
 

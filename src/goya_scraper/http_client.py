@@ -65,6 +65,34 @@ def cache_filename(path: str) -> str:
     return f"{quote(key, safe='-._')}.html"
 
 
+#: Leading bytes of the image formats the site actually serves, mapped to the
+#: extension we store them under. The site publishes .jpg, .jpeg and .png for
+#: the same format; storing them by content rather than by URL keeps the three
+#: down to the two that are really different.
+_IMAGE_SIGNATURES = (
+    (b"\xff\xd8\xff", ".jpg"),
+    (b"\x89PNG\r\n\x1a\n", ".png"),
+    (b"GIF87a", ".gif"),
+    (b"GIF89a", ".gif"),
+)
+
+
+def image_extension(payload: bytes) -> str | None:
+    """The extension for these bytes, or None when they are not an image.
+
+    Checked on content instead of on the Content-Type header because the header
+    is something the server claims, and the bytes are something we can verify.
+    """
+    for signature, extension in _IMAGE_SIGNATURES:
+        if payload.startswith(signature):
+            return extension
+    return None
+
+
+#: The extensions a stored image can have, in the order they are looked for.
+_IMAGE_EXTENSIONS = tuple(dict.fromkeys(e for _, e in _IMAGE_SIGNATURES))
+
+
 class HttpClient:
     def __init__(
         self,
@@ -166,7 +194,18 @@ class HttpClient:
         return self.cache_dir / cache_filename(path)
 
     def _fetch(self, url: str) -> str:
-        """Request a URL, retrying only what is worth retrying."""
+        """Request a URL and return it as text, retrying only what is worth retrying."""
+        response = self._fetch_response(url)
+        if not response.encoding:
+            response.encoding = response.apparent_encoding
+        return response.text
+
+    def _fetch_response(self, url: str):
+        """Request a URL and return the raw Response.
+
+        Split out of `_fetch` so binary downloads reuse the retry, rate limit
+        and timeout policy instead of growing a second copy of it.
+        """
         last_error: HttpError | None = None
 
         for attempt in range(1, self.retries + 1):
@@ -177,9 +216,7 @@ class HttpClient:
                 last_error = HttpError(f"{url}: {exc}")
             else:
                 if response.status_code == 200:
-                    if not response.encoding:
-                        response.encoding = response.apparent_encoding
-                    return response.text
+                    return response
 
                 last_error = HttpError(
                     f"{url}: HTTP {response.status_code}",
@@ -202,3 +239,45 @@ class HttpClient:
                 time.sleep(delay)
 
         raise last_error  # type: ignore[misc]  # always set if we got here
+
+    def download(self, url: str, directory: Path, stem: str) -> str | None:
+        """Fetch an image into `directory` as `{stem}{extension}`.
+
+        Returns the extension used, or None when nothing was saved. The caller
+        needs the extension to record where the file landed, and it cannot know
+        it beforehand: the name follows the bytes we receive, not the URL.
+
+        `directory` doubles as the cache. A file already there with the same
+        stem is reused without asking the server for anything, which is what
+        makes a second run free, the same way `cache/` does for pages.
+
+        A 200 is not taken on trust. The bytes have to look like an image we
+        recognise, because a page can answer 200 with an error notice, and
+        naming that after the URL would write a .jpg full of HTML.
+        """
+        directory = Path(directory)
+        for extension in _IMAGE_EXTENSIONS:
+            already = directory / f"{stem}{extension}"
+            if already.exists() and already.stat().st_size > 0:
+                log.debug("already downloaded %s", already.name)
+                return extension
+
+        if not self._robots_allows(url):
+            raise RobotsDisallowed(f"robots.txt disallows {url}")
+
+        payload = self._fetch_response(url).content
+        extension = image_extension(payload)
+        if extension is None:
+            log.warning("%s: not an image we recognise, nothing saved", url)
+            return None
+
+        destination = directory / f"{stem}{extension}"
+        directory.mkdir(parents=True, exist_ok=True)
+        # Through a temporary file, like storage.save() does: an interrupted
+        # download must not leave a truncated image that the next run would
+        # reuse as if it were complete.
+        temporary = destination.with_name(destination.name + ".tmp")
+        temporary.write_bytes(payload)
+        temporary.replace(destination)
+        log.debug("saved %s (%s bytes)", destination.name, len(payload))
+        return extension

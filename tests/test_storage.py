@@ -237,5 +237,6 @@ class TestMovieSerialisation:
         # Key order is meaningful in the file, so it is worth pinning down.
         assert list(make_movie().to_dict()) == [
             "slug", "url", "title", "title_original", "synopsis", "countries",
-            "countries_raw", "duration_minutes", "credits", "goya", "data_quality",
+            "countries_raw", "duration_minutes", "poster_url", "poster_path",
+            "credits", "goya", "data_quality",
         ]

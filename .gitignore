@@ -18,6 +18,10 @@ dist/
 # La base de datos NO: es una proyeccion reconstruible con
 # `python -m goya_scraper.import_db`. Los ficheros WAL tampoco se versionan.
 data/goya.db
+
+# Los carteles tampoco: se descargan con `python -m goya_scraper` y su peso
+# no compensa. La ruta que apunta a cada uno ya esta en data/movies.json.
+data/posters/
 *.db-wal
 *.db-shm
 

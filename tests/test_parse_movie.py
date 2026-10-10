@@ -100,6 +100,72 @@ class TestMovieWithoutAwards:
         assert movie.missing_fields  # at least title_original
 
 
+class TestPoster:
+    """219 of the 1678 real films have no poster, so both cases are normal."""
+
+    def test_the_poster_url_is_absolute(self, buen_patron):
+        movie = parse_movie(buen_patron, "el-buen-patron")
+        assert movie.poster_url == (
+            "https://www.premiosgoya.com/wp-content/uploads/2021/11/system/uploads"
+            "/feature_film/poster/2150/EL_BUEN_PATRON_76x101_baja-320x457.jpg"
+        )
+
+    def test_a_relative_path_is_resolved_against_the_site(self):
+        html = """
+        <article class="pelicula">
+          <div class="pelicula__header__titulo"><h1>Ejemplo</h1></div>
+          <img class="attachment-cartel size-cartel" src="/wp-content/uploads/a.jpg">
+        </article>
+        """
+        movie = parse_movie(html, "ejemplo")
+        assert movie.poster_url == "https://www.premiosgoya.com/wp-content/uploads/a.jpg"
+
+    def test_the_social_icons_are_not_mistaken_for_the_poster(self):
+        # The page carries Twitter/Facebook/... SVGs. Keying on the class rather
+        # than on `img` is what keeps them out.
+        html = """
+        <article class="pelicula">
+          <div class="pelicula__header__titulo"><h1>Ejemplo</h1></div>
+          <img src='/wp-content/themes/goya/img/redes/Twitter.svg'>
+          <img src='/wp-content/themes/goya/img/redes/Facebook.svg'>
+        </article>
+        """
+        movie = parse_movie(html, "ejemplo")
+        assert movie.poster_url is None
+
+    def test_a_page_without_a_poster_has_none(self):
+        html = """
+        <article class="pelicula">
+          <div class="pelicula__header__titulo"><h1>Ejemplo</h1></div>
+        </article>
+        """
+        movie = parse_movie(html, "sin-cartel")
+        assert movie.poster_url is None
+
+    def test_an_empty_src_is_not_a_poster(self):
+        html = """
+        <article class="pelicula">
+          <div class="pelicula__header__titulo"><h1>Ejemplo</h1></div>
+          <img class="attachment-cartel" src="">
+        </article>
+        """
+        movie = parse_movie(html, "vacia")
+        assert movie.poster_url is None
+
+    def test_the_path_is_not_set_by_parsing(self, buen_patron):
+        # Parsing says what the site claims; downloading is a separate step.
+        # Keeping them apart is what lets poster_url and poster_path answer two
+        # different "why is this missing" questions.
+        movie = parse_movie(buen_patron, "el-buen-patron")
+        assert movie.poster_url is not None
+        assert movie.poster_path is None
+
+    def test_every_fixture_poster_comes_from_the_site(self, load):
+        for name in ("el-buen-patron", "maixabel", "otra-ronda", "yalla"):
+            movie = parse_movie(load(f"pelicula_{name}.html"), name)
+            assert movie.poster_url.startswith("https://www.premiosgoya.com/")
+
+
 class TestCountries:
     def test_single_country(self, maixabel):
         movie = parse_movie(maixabel, "maixabel")

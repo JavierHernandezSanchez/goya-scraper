@@ -5,6 +5,52 @@ import pytest
 FIXTURES = Path(__file__).parent / "fixtures"
 
 
+# --- HTTP doubles ----------------------------------------------------------------
+#
+# They live here rather than in one test module because the poster tests need
+# the same ones. Everything runs against these, so no test touches the network.
+
+
+class FakeResponse:
+    def __init__(self, status=200, text="", encoding="utf-8", content=None):
+        self.status_code = status
+        self.text = text
+        self.encoding = encoding
+        self.apparent_encoding = "utf-8"
+        # Binary downloads read .content. Defaults to the text encoded, so a
+        # test that only cares about HTML keeps working.
+        self.content = content if content is not None else text.encode("utf-8")
+
+
+class FakeSession:
+    """A requests.Session stand-in that replays a scripted list of outcomes."""
+
+    def __init__(self, outcomes):
+        self.outcomes = list(outcomes)
+        self.headers = {}
+        self.calls = []
+
+    def get(self, url, timeout=None):
+        self.calls.append({"url": url, "timeout": timeout})
+        outcome = self.outcomes.pop(0) if self.outcomes else FakeResponse(200, "<html/>")
+        if isinstance(outcome, Exception):
+            raise outcome
+        return outcome
+
+
+def make_client(outcomes, tmp_path, **kwargs):
+    """An HttpClient wired to a fake session, with the waiting turned off."""
+    from goya_scraper.http_client import HttpClient
+
+    kwargs.setdefault("min_interval", 0)        # no sleeping in tests
+    kwargs.setdefault("retry_delays", (0, 0, 0))
+    kwargs.setdefault("respect_robots", False)   # tested on its own
+    kwargs.setdefault("cache_dir", tmp_path / "cache")
+    session = FakeSession(outcomes)
+    client = HttpClient(session=session, **kwargs)
+    return client, session
+
+
 @pytest.fixture
 def load():
     """Return a function that reads a saved real page from tests/fixtures/."""

@@ -17,7 +17,7 @@ from pathlib import Path
 #: Numero de linea del proyecto en la que nacio el esquema actual. Cambia solo si
 #: cambian las tablas; el `SCHEMA_VERSION` de storage.py cuenta otra historia
 #: (la del documento JSON) y puede moverse por separado.
-DB_SCHEMA_VERSION = 1
+DB_SCHEMA_VERSION = 2
 
 #: SQLite 3.37 introduced STRICT. Sin ella no hay garantias de tipo.
 MIN_SQLITE_VERSION = (3, 37, 0)

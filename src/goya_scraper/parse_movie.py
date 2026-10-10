@@ -7,7 +7,15 @@ import logging
 
 from bs4 import BeautifulSoup
 
-from .model import Credits, Movie, clean_text, parse_countries, parse_duration, split_people
+from .model import (
+    SITE_URL,
+    Credits,
+    Movie,
+    clean_text,
+    parse_countries,
+    parse_duration,
+    split_people,
+)
 
 log = logging.getLogger(__name__)
 
@@ -16,6 +24,12 @@ SELECTOR_TITLE = ".pelicula__header__titulo h1"
 SELECTOR_SYNOPSIS = ".pelicula__header__sinopsis"
 SELECTOR_NOMINATIONS_COUNT = ".pelicula__header__premios--nominaciones span"
 SELECTOR_AWARDS_COUNT = ".pelicula__header__premios--goyas span"
+
+# The poster. Keyed on the class the theme gives it, not on the alt text: the
+# page also carries the social icons, so a bare `img` would pick those up.
+# `src` is already the largest size in the srcset, so there is nothing to
+# choose between sizes and no need to parse srcset.
+SELECTOR_POSTER = "img.attachment-cartel"
 
 # The page also carries a list of the awards the film won. It mostly agrees with
 # the edition pages, but not always, and when it does not, knowing *which*
@@ -87,6 +101,22 @@ def _read_award_categories(article) -> list[str]:
     ]
 
 
+def _read_poster_url(article) -> str | None:
+    """The absolute URL of the poster, or None when the page has none.
+
+    219 of the 1678 films in the dataset have no poster at all, so a missing
+    one is the normal case for those films and not an error. The path is
+    resolved against SITE_URL because the site publishes it relative.
+    """
+    tag = article.select_one(SELECTOR_POSTER)
+    if not tag:
+        return None
+    src = (tag.get("src") or "").strip()
+    if not src:
+        return None
+    return f"{SITE_URL}/{src.lstrip('/')}"
+
+
 def parse_movie(html: str, slug: str) -> Movie:
     """Parse a movie page into a Movie.
 
@@ -115,6 +145,7 @@ def parse_movie(html: str, slug: str) -> Movie:
         countries=countries,
         countries_raw=countries_raw,
         duration_minutes=parse_duration(fields.get(LABEL_DURATION)),
+        poster_url=_read_poster_url(article),
         credits=Credits(
             directors=split_people(fields.get(LABEL_DIRECTORS)),
             screenwriters=split_people(fields.get(LABEL_SCREENWRITERS)),

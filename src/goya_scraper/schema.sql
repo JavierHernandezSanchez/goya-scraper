@@ -103,6 +103,12 @@ CREATE TABLE movie (
     producers_raw        TEXT,
     -- El texto sin normalizar, para que la normalizacion sea auditable.
     countries_raw        TEXT,
+    -- El cartel. Dos columnas y no una: poster_url es lo que dice el sitio
+    -- (NULL = la pelicula no tiene cartel publicado, y son 219 de 1678) y
+    -- poster_path es donde lo dejamos nosotros (NULL = no se pudo descargar).
+    -- Con una sola columna los dos "ausente" serian indistinguibles (ADR-033).
+    poster_url           TEXT,
+    poster_path          TEXT,
     detail_status        TEXT    NOT NULL
         CHECK (detail_status IN ('ok', 'not_found', 'error')),
     -- Lo que dice la ficha. Se guarda aunque lo podamos contar nosotros,

@@ -21,7 +21,8 @@ DEFAULT_PATH = Path("data/movies.json")
 #   1: first version
 #   2: data_quality.reported_by_source gained "award_categories"
 #   3: nominations gained "category_raw" alongside the canonical "category"
-SCHEMA_VERSION = 3
+#   4: movies gained "poster_url" and "poster_path"
+SCHEMA_VERSION = 4
 
 
 class CorruptDocumentError(RuntimeError):

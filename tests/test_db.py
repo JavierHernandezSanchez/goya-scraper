@@ -45,8 +45,8 @@ EXPECTED_TABLES = {
 EXPECTED_KEYS = {
     "movie": (
         ["id", "slug", "title", "title_original", "synopsis", "duration_minutes",
-         "producers_raw", "countries_raw", "detail_status", "reported_nominations",
-         "reported_awards"],
+         "producers_raw", "countries_raw", "poster_url", "poster_path",
+         "detail_status", "reported_nominations", "reported_awards"],
         ["id"],
         [],
     ),
@@ -88,7 +88,7 @@ def filled_db(empty_db):
     connection.execute("INSERT INTO category VALUES (1, 'Mejor pelicula', 'work')")
     connection.execute(
         "INSERT INTO movie VALUES (1, 'el-buen-patron', 'El buen patron', "
-        "NULL, NULL, 115, NULL, NULL, 'ok', 20, 6)"
+        "NULL, NULL, 115, NULL, NULL, NULL, NULL, 'ok', 20, 6)"
     )
     connection.execute("INSERT INTO person VALUES (1, 'Paco de Lucia')")
     connection.execute(
@@ -242,21 +242,21 @@ class TestBehaviour:
         with pytest.raises(sqlite3.IntegrityError):
             empty_db.execute(
                 "INSERT INTO movie VALUES (1, 'x', 'X', NULL, NULL, '105 anos', "
-                "NULL, NULL, 'ok', 1, 0)"
+                "NULL, NULL, NULL, NULL, 'ok', 1, 0)"
             )
 
     def test_a_negative_duration_is_refused(self, empty_db):
         with pytest.raises(sqlite3.IntegrityError):
             empty_db.execute(
                 "INSERT INTO movie VALUES (1, 'x', 'X', NULL, NULL, -5, "
-                "NULL, NULL, 'ok', 1, 0)"
+                "NULL, NULL, NULL, NULL, 'ok', 1, 0)"
             )
 
     def test_an_unknown_detail_status_is_refused(self, empty_db):
         with pytest.raises(sqlite3.IntegrityError):
             empty_db.execute(
                 "INSERT INTO movie VALUES (1, 'x', 'X', NULL, NULL, NULL, "
-                "NULL, NULL, 'inventado', 1, 0)"
+                "NULL, NULL, NULL, NULL, 'inventado', 1, 0)"
             )
 
     def test_a_missing_film_cannot_have_nominations(self, filled_db):
@@ -300,26 +300,26 @@ class TestBehaviour:
         with pytest.raises(sqlite3.IntegrityError):
             filled_db.execute(
                 "INSERT INTO movie VALUES (2, 'y', 'Y', NULL, NULL, NULL, NULL, "
-                "NULL, 'error', 0, 0)"
+                "NULL, NULL, NULL, 'error', 0, 0)"
             )
         # The same film with status ok and real counts is fine.
         filled_db.execute(
             "INSERT INTO movie VALUES (2, 'y', 'Y', NULL, NULL, NULL, NULL, "
-            "NULL, 'not_found', NULL, NULL)"
+            "NULL, NULL, NULL, 'not_found', NULL, NULL)"
         )
 
     def test_a_null_reported_count_requires_a_failed_page(self, filled_db):
         with pytest.raises(sqlite3.IntegrityError):
             filled_db.execute(
                 "INSERT INTO movie VALUES (2, 'y', 'Y', NULL, NULL, NULL, NULL, "
-                "NULL, 'ok', NULL, 0)"
+                "NULL, NULL, NULL, 'ok', NULL, 0)"
             )
 
     def test_two_films_cannot_share_a_slug(self, filled_db):
         with pytest.raises(sqlite3.IntegrityError):
             filled_db.execute(
                 "INSERT INTO movie VALUES (2, 'el-buen-patron', 'Otro', NULL, NULL, "
-                "NULL, NULL, NULL, 'ok', 1, 0)"
+                "NULL, NULL, NULL, NULL, NULL, 'ok', 1, 0)"
             )
 
     def test_two_films_may_share_a_title(self, filled_db):
@@ -327,7 +327,7 @@ class TestBehaviour:
         deliberately not unique."""
         filled_db.execute(
             "INSERT INTO movie VALUES (2, 'alma-2', 'El buen patron', NULL, NULL, "
-            "NULL, NULL, NULL, 'ok', 1, 0)"
+            "NULL, NULL, NULL, NULL, NULL, 'ok', 1, 0)"
         )
         assert filled_db.execute("SELECT COUNT(*) FROM movie").fetchone()[0] == 2
 
@@ -445,7 +445,7 @@ class TestTheTotalsView:
     def test_a_film_with_none_reads_as_zero_not_missing(self, filled_db):
         filled_db.execute(
             "INSERT INTO movie VALUES (2, 'y', 'Y', NULL, NULL, NULL, NULL, NULL, "
-            "'ok', 0, 0)"
+            "NULL, NULL, 'ok', 0, 0)"
         )
         row = filled_db.execute(
             "SELECT * FROM movie_totals WHERE movie_id = 2"
