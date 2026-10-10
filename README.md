@@ -81,7 +81,7 @@ Sin argumentos, sin opciones, sin CLI. Eso lo hace todo.
 
 | Ejecución                      | Peticiones          | Tiempo       |
 | ------------------------------ | ------------------- | ------------ |
-| Primera vez, todo el histórico | 3178                | ~64 min      |
+| Primera vez, todo el histórico | 3397                | ~68 min      |
 | Segunda vez                    | **0**               | ~3 s         |
 | Reanudada tras un corte        | solo lo que faltaba | lo que falte |
 

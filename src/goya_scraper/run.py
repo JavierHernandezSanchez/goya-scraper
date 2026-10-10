@@ -109,11 +109,22 @@ def add_movie(movies: dict[str, Movie], movie: Movie) -> None:
     The slug is the identity the server gives us, so a plain dict keyed by it is
     the whole deduplication strategy (ADR-002). A film already present keeps its
     detail page and gains the new nominations.
+
+    It also fills in the poster when the record we already had has none. The
+    first version of this function only merged nominations, which meant a field
+    added later could never reach a dataset that was scraped before it: the
+    poster was downloaded, the file landed on disk, and then the record we kept
+    was the old one without it. Filling a gap is not overwriting anything, so
+    it does not conflict with keeping the detail page from the first pass.
     """
     existing = movies.get(movie.slug)
     if existing is None:
         movies[movie.slug] = movie
         return
+
+    if existing.poster_url is None and movie.poster_url is not None:
+        existing.poster_url = movie.poster_url
+        existing.poster_path = movie.poster_path
 
     already = {
         (n.edition, n.category, tuple(n.credited))

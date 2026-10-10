@@ -1,5 +1,8 @@
 """Parsing a movie page, using real pages from edition 36 (2022)."""
 
+import pathlib
+import re
+
 import pytest
 
 from goya_scraper.parse_movie import NotAMoviePageError, parse_movie
@@ -164,6 +167,64 @@ class TestPoster:
         for name in ("el-buen-patron", "maixabel", "otra-ronda", "yalla"):
             movie = parse_movie(load(f"pelicula_{name}.html"), name)
             assert movie.poster_url.startswith("https://www.premiosgoya.com/")
+
+
+class TestTheSelectorCoversEveryContentImage:
+    """The guard against losing a group of films to a CSS class.
+
+    The first version of the selector matched only `attachment-cartel` and
+    silently dropped the 219 films the theme tags `attachment-galeria`. The
+    check that catches that is not "does it find the one I know about" but
+    "does it find every image the site published".
+    """
+
+    CONTENT_IMAGE = re.compile(r'<img[^>]*src="(/wp-content/uploads/[^"]+)"')
+
+    def _cache_files(self):
+        root = pathlib.Path("cache")
+        if not root.is_dir():
+            pytest.skip("needs the downloaded cache")
+        return sorted(root.glob("pelicula_*.html"))
+
+    def test_no_content_image_is_left_out(self):
+        missed = []
+        for path in self._cache_files():
+            html = path.read_text(encoding="utf-8", errors="replace")
+            slug = path.stem.replace("pelicula_", "")
+            movie = parse_movie(html, slug)
+            found = {m for m in self.CONTENT_IMAGE.findall(html)}
+            # One content image per film page, and the selector must find it.
+            if len(found) != 1:
+                missed.append(f"{slug}: {len(found)} imagenes de contenido")
+                continue
+            if movie.poster_url is None:
+                missed.append(f"{slug}: sin poster_url")
+            elif not movie.poster_url.endswith(found.pop()):
+                missed.append(f"{slug}: se equivoco de imagen")
+        assert not missed, missed[:5]
+
+    def test_every_film_ends_up_with_a_poster(self):
+        without = [
+            path.stem.replace("pelicula_", "")
+            for path in self._cache_files()
+            if parse_movie(
+                path.read_text(encoding="utf-8", errors="replace"),
+                path.stem.replace("pelicula_", ""),
+            ).poster_url
+            is None
+        ]
+        assert not without, f"{len(without)} pelicula(s) sin cartel: {without[:5]}"
+
+    def test_both_classes_are_known(self):
+        """Pins the inconsistency, so a third class fails loudly."""
+        classes = set()
+        for path in self._cache_files():
+            html = path.read_text(encoding="utf-8", errors="replace")
+            for match in re.findall(r'<img[^>]*class="([^"]+)"[^>]*>', html):
+                if "attachment" in match:
+                    classes.add(match)
+        assert classes == {"attachment-cartel size-cartel",
+                           "attachment-galeria size-galeria"}
 
 
 class TestCountries:

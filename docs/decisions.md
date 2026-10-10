@@ -1032,9 +1032,10 @@ corrupto tres fases después.
 **Contexto.** La ficha de cada película enseña un cartel. Nadie lo pedía y esta fase ha
 decidido que sí. Antes de escribir código, lo medido sobre las 1678 fichas reales:
 
-- **1459 películas tienen cartel. 219 no.** El 13% es un caso normal, no una incidencia.
-- El selector fiable es `img.attachment-cartel` dentro de `article.pelicula`. La página
-  lleva además los iconos de redes sociales, así que un `img` a los cogería.
+- **Las 1678 películas tienen cartel.** Ninguna se queda sin él.
+- El selector cubre **dos** clases: 1459 de las fichas etiquetan el cartel
+  `attachment-cartel` y las 219 restantes `attachment-galeria`. La página lleva además
+  los iconos de redes sociales, así que un `img` a los cogería.
 - `src` **es** la mayor resolución del `srcset`, así que no hay nada que elegir y no
   hace falta parsear `srcset`.
 - El sitio publica el mismo formato como `.jpg` y como `.jpeg` (1422 y 20). Además hay 17
@@ -1057,13 +1058,28 @@ se pide nada. Eso es lo que hace que la segunda ejecución no cueste nada, igual
 
 **Motivo.** Dos campos y no uno porque son dos hechos distintos, y es exactamente la
 distinción que ADR-033 construyó para `reported_awards`. Con una sola columna, «la web no
-tiene cartel» y «no se pudo descargar» serían el mismo `null`, y esa es la confusión
-más cara del proyecto. También distingue un fallo de red de una ausencia real, que es lo
-mismo que hace `detail_status` con la ficha.
+tiene cartel» y «no se pudo descargar» serían el mismo `null`, y esa es la confusión más
+cara del proyecto. Hoy las 1678 tienen cartel y ninguna descarga falla, así que los dos
+`null` todavía no se han dado: sirven el día que el sitio falle, no el de hoy.
 
 Las dos extensiones del mismo formato se reducen a una porque **el nombre lo decide lo que
 llegan los bytes, no la URL**. El sitio puede servir `.jpg` y `.jpeg` del mismo JPEG; si
 nombráramos por la URL tendríamos dos ficheros para el mismo formato.
+
+**El error que este ADR no previó.** La primera versión del selector era
+`img.attachment-cartel`, y parecía correcta: 1459 de 1678, cero fallos de descarga, cero
+errores de validación. El fallo no se veía en esas cifras, porque un selector demasiado
+estrecho no produce errores sino un `null` que parece legítimo.
+
+Apareció al ir a comprobar a mano una película sin cartel: *La sociedad de la nieve* —12
+Goya, la más representada del dataset— no tenía ninguno. Su `<img>` estaba ahí, con la
+clase `attachment-galeria`. El sitio **sí** publica su cartel.
+
+La lección, y por eso hay un test que la fija: **un dato que sale a cero no siempre es
+"el sitio no lo tiene"**, y a veces es "yo no lo estoy mirando". Por eso el test no
+comprueba que el selector encuentre el cartel que ya conocemos, sino que no deje fuera
+**ninguna** imagen de contenido de las 1678 fichas, y que fije las dos clases conocidas.
+Un `null` que nadie ha comprobado a mano es una hipótesis, no un dato.
 
 **Consecuencias.**
 
@@ -1072,7 +1088,7 @@ nombráramos por la URL tendríamos dos ficheros para el mismo formato.
   dejaría una imagen rota que la siguiente ejecución reutilizaría como si fuera buena.
 - `SCHEMA_VERSION` 3 → 4, `DB_SCHEMA_VERSION` 1 → 2.
 - Las imágenes no se versionan. La ruta que apunta a cada una ya está en el JSON.
-- El coste: **+1459 peticiones**, de 1719 a 3178. Es un aumento del 85% sobre un servidor
+- El coste: **+1678 peticiones**, de 1719 a 3397. Es un aumento del 98% sobre un servidor
   al que este proyecto pretende ser educado. Se acepta porque el rate limit, el
   `robots.txt` y los reintentos se aplican igual que a las páginas, y porque el resultado
   es un dato que el sitio publica de forma visible. Lo que no se hace es descargar en

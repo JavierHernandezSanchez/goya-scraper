@@ -2,7 +2,7 @@
   "_meta": {
     "schema_version": 4,
     "source": "https://www.premiosgoya.com",
-    "generated_at": "2026-10-10T22:11:58Z",
+    "generated_at": "2026-10-10T22:27:51Z",
     "editions_scraped": [
       1,
       2,
@@ -268,8 +268,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 106,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/449/100metros_Baja-460x657.jpg",
+      "poster_path": "data/posters/100-metros.jpg",
       "credits": {
         "directors": [
           "Marcel Barrena"
@@ -651,8 +651,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 115,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/434/1898_LOS_ULTIMOS_DE_FILIPINAS_final-460x657.jpg",
+      "poster_path": "data/posters/1898-los-ultimos-de-filipinas.jpg",
       "credits": {
         "directors": [
           "Salvador Calvo"
@@ -809,8 +809,8 @@
       ],
       "countries_raw": "Chile",
       "duration_minutes": 98,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/iberoamerican_film/poster/2577/cartel_1976-460x613.jpg",
+      "poster_path": "data/posters/1976.jpg",
       "credits": {
         "directors": [
           "Manuela Martelli"
@@ -1209,8 +1209,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 85,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/490/NES_CARTEL-460x661.jpg",
+      "poster_path": "data/posters/2016-nacido-en-siria.jpg",
       "credits": {
         "directors": [
           "Hernán Zin"
@@ -2570,8 +2570,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 82,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/feature_film/poster/2306/CARTEL_MAIL-460x657.jpg",
+      "poster_path": "data/posters/a-las-mujeres-de-espana-maria-lejarraga.jpg",
       "credits": {
         "directors": [
           "Laura Hojman"
@@ -4686,8 +4686,8 @@
       ],
       "countries_raw": "Uruguay",
       "duration_minutes": 74,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/iberoamerican_film/poster/3369/Agarrame_Fuerte_poster-460x690.jpg",
+      "poster_path": "data/posters/agarrame-fuerte.jpg",
       "credits": {
         "directors": [
           "Ana Guevara Pose",
@@ -6021,8 +6021,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 120,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/feature_film/poster/2313/alcarras-460x650.jpg",
+      "poster_path": "data/posters/alcarras.jpg",
       "credits": {
         "directors": [
           "Carla Simón"
@@ -6857,8 +6857,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 9,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/short_film/poster/2393/CARTEL-AMANECE-LA-NOCHE-MAS-LARGA-460x657.jpg",
+      "poster_path": "data/posters/amanece-la-noche-mas-larga.jpg",
       "credits": {
         "directors": [
           "Carlos Fernández de Vigo",
@@ -8278,8 +8278,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 15,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/CARTEL-NUEVO-ANGULO-MUERTO-460x655.jpg",
+      "poster_path": "data/posters/angulo-muerto.jpg",
       "credits": {
         "directors": [
           "Cristian Beteta"
@@ -9357,8 +9357,8 @@
       ],
       "countries_raw": "Argentina",
       "duration_minutes": 140,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/iberoamerican_film/poster/2475/Argentina__1985_-_Poster-460x677.jpg",
+      "poster_path": "data/posters/argentina-1985.jpg",
       "credits": {
         "directors": [
           "Santiago Mitre"
@@ -9671,8 +9671,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 138,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/AsBestas_AAFF_RGB_70X100_150ppp_1127_bajapx-460x651.jpg",
+      "poster_path": "data/posters/as-bestas.jpg",
       "credits": {
         "directors": [
           "Rodrigo Sorogoyen"
@@ -10919,8 +10919,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 18,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/short_film/poster/2726/Cartel_AVA_07.2023-460x657.jpg",
+      "poster_path": "data/posters/ava.jpg",
       "credits": {
         "directors": [
           "Mabel Lozano"
@@ -11972,8 +11972,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 92,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/feature_film/poster/2608/Bajo_Terapia_cartel-460x657.jpg",
+      "poster_path": "data/posters/bajo-terapia.jpg",
       "credits": {
         "directors": [
           "Gerardo Herrero"
@@ -12657,8 +12657,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 23,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/short_film/poster/512/Poster_Baraka__1_-460x650.jpg",
+      "poster_path": "data/posters/baraka.jpg",
       "credits": {
         "directors": [
           "Néstor Ruiz Medina"
@@ -13008,8 +13008,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 9,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/short_film/poster/2598/BECARIAS_POSTER-460x657.jpg",
+      "poster_path": "data/posters/becarias.jpg",
       "credits": {
         "directors": [
           "Marina Cortón",
@@ -13124,8 +13124,8 @@
       ],
       "countries_raw": "Argentina",
       "duration_minutes": 108,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/iberoamerican_film/poster/3980/belen_cartel-460x690.jpg",
+      "poster_path": "data/posters/belen.jpg",
       "credits": {
         "directors": [
           "Dolores Fonzi"
@@ -13991,8 +13991,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 18,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/short_film/poster/3128/POSTER-ES_Betiko-gaua_240225-460x657.png",
+      "poster_path": "data/posters/betiko-gaua-la-noche-eterna.png",
       "credits": {
         "directors": [
           "Eneko Sagardoy"
@@ -14666,8 +14666,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 3,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/short_film/poster/355/cartelBLABLABLA_14jul2015-460x651.jpg",
+      "poster_path": "data/posters/bla-bla-bla.jpg",
       "credits": {
         "directors": [
           "Alexis Morante"
@@ -15408,8 +15408,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 14,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/AAFF_Blow_Poster_70x100cm_Test_v7_IDFA_Goya-460x657.jpg",
+      "poster_path": "data/posters/blow.jpg",
       "credits": {
         "directors": [
           "Neus Ballús"
@@ -15785,8 +15785,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 80,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/298/cartel-BOLLYWOOD-460x657.jpg",
+      "poster_path": "data/posters/bollywood-made-in-spain.jpg",
       "credits": {
         "directors": [
           "Ramón Margareto"
@@ -16270,8 +16270,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 81,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3160/BUFFALO_KIDS_MAIN-460x661.jpg",
+      "poster_path": "data/posters/buffalo-kids.jpg",
       "credits": {
         "directors": [
           "Juan Jesús García Galocha \"Galo\"",
@@ -16339,8 +16339,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 8,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/short_film/poster/3669/POSTER_BUFFET_Laureles-460x655.png",
+      "poster_path": "data/posters/buffet-paraiso.png",
       "credits": {
         "directors": [
           "Héctor Zafra",
@@ -17120,8 +17120,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 7,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/CafunePoster_v02_FondoAcoplado-460x648.png",
+      "poster_path": "data/posters/cafune.png",
       "credits": {
         "directors": [
           "Carlos Fernández de Vigo",
@@ -17307,8 +17307,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 88,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3033/Cartel_CALLADITA_800-460x622.jpg",
+      "poster_path": "data/posters/calladita.jpg",
       "credits": {
         "directors": [
           "Miguel Faus"
@@ -18246,8 +18246,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 126,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/feature_film/poster/2912/CAMPEONEX_CARTEL_1080X1035-460x575.png",
+      "poster_path": "data/posters/campeonex.png",
       "credits": {
         "directors": [
           "Javier Fesser"
@@ -18778,8 +18778,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 101,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/417/cantabrico_cartel_fecha_70x100_print-460x655.jpg",
+      "poster_path": "data/posters/cantabrico-los-dominios-del-oso-pardo.jpg",
       "credits": {
         "directors": [
           "Joaquín Gutiérrez Acha"
@@ -19215,8 +19215,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 14,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/short_film/poster/3442/Poster_CARMELA_800px-460x657.jpg",
+      "poster_path": "data/posters/carmela.jpg",
       "credits": {
         "directors": [
           "Vicente Mallols"
@@ -20091,8 +20091,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 110,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3053/Cartel_CasaEnFlames_70x100_RGB_NoPrint-min-460x657.jpg",
+      "poster_path": "data/posters/casa-en-flames.jpg",
       "credits": {
         "directors": [
           "Dani de la Orden"
@@ -20965,8 +20965,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 95,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/375/Cerca_de_tu_casa._Cartel-460x657.jpg",
+      "poster_path": "data/posters/cerca-de-tu-casa.jpg",
       "credits": {
         "directors": [
           "Eduard Cortés"
@@ -22173,8 +22173,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 18,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/short_film/poster/3093/CIAOBAMBINA-460x650.png",
+      "poster_path": "data/posters/ciao-bambina.png",
       "credits": {
         "directors": [
           "Afioco Gnecco",
@@ -22231,8 +22231,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 97,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/333/CADP-cartel-460x657.jpg",
+      "poster_path": "data/posters/cien-anos-de-perdon.jpg",
       "credits": {
         "directors": [
           "Daniel Calparsoro"
@@ -22722,8 +22722,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 97,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3820/Cartel-css-460x690.jpg",
+      "poster_path": "data/posters/ciudad-sin-sueno.jpg",
       "credits": {
         "directors": [
           "Guillermo Galoe"
@@ -23011,8 +23011,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 20,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/short_film/poster/580/Colores_Cartel-460x685.jpg",
+      "poster_path": "data/posters/colores.jpg",
       "credits": {
         "directors": [
           "Arly Jones",
@@ -23380,8 +23380,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 114,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/feature_film/poster/2271/CARTEL_C.O.-460x820.jpeg",
+      "poster_path": "data/posters/competencia-oficial.jpg",
       "credits": {
         "directors": [
           "Gastón Duprat",
@@ -23802,8 +23802,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 86,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/feature_film/poster/2809/Cartel-460x681.jpg",
+      "poster_path": "data/posters/contigo-contigo-y-sin-mi.jpg",
       "credits": {
         "directors": [
           "Amaya Villar Navascués"
@@ -25031,8 +25031,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 6,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/short_film/poster/3148/Cuarentena_cartel_enero24_RRSS-web-460x657.jpeg",
+      "poster_path": "data/posters/cuarentena.jpg",
       "credits": {
         "directors": [
           "Celia de Molina"
@@ -25090,8 +25090,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 14,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/short_film/poster/2833/CUENTAS_DIVINAS_poster_laureles_junio23-460x656.jpg",
+      "poster_path": "data/posters/cuentas-divinas.jpg",
       "credits": {
         "directors": [
           "Eulàlia Ramon"
@@ -25150,8 +25150,8 @@
       ],
       "countries_raw": "España",
       "duration_minutes": null,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2020/01/cuerdas_s-770796540-large.jpg",
+      "poster_path": "data/posters/cuerdas-2.jpg",
       "credits": {
         "directors": [
           "Pedro Solís García"
@@ -25213,8 +25213,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 30,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/short_film/poster/2466/PosterCUERDAS_actJUL22_curtas-460x687.jpg",
+      "poster_path": "data/posters/cuerdas-3.jpg",
       "credits": {
         "directors": [
           "Estibaliz Urresola Solaguren"
@@ -25447,8 +25447,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 79,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/598/cartel_Dancing_Beethoven_definitivo-460x650.jpg",
+      "poster_path": "data/posters/dancing-beethoven.jpg",
       "credits": {
         "directors": [
           "Arantxa Aguirre"
@@ -26138,8 +26138,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 25,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/short_film/poster/3473/DE_SUCRE_POSTER-460x657.jpg",
+      "poster_path": "data/posters/de-sucre.jpg",
       "credits": {
         "directors": [
           "Clàudia Cedó"
@@ -26282,8 +26282,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 11,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/short_film/poster/343/Decorado._Cartel-460x650.jpg",
+      "poster_path": "data/posters/decorado.jpg",
       "credits": {
         "directors": [
           "Alberto Vázquez"
@@ -26340,8 +26340,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 95,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3935/DECORADO_Cartel_CASTELLANO_800px_ancho-460x644.jpg",
+      "poster_path": "data/posters/decorado-2.jpg",
       "credits": {
         "directors": [
           "Alberto Vázquez"
@@ -26399,8 +26399,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 93,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/608/DEEP_1sht_MASTER_FINAL_SPANISH_UN_MUNDO_SUMERGIDO_FINAL-460x657.jpg",
+      "poster_path": "data/posters/deep.jpg",
       "credits": {
         "directors": [
           "Julio Soto Gúrpide"
@@ -27960,8 +27960,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 104,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3017/Cartel_Locomia_-460x651.jpeg",
+      "poster_path": "data/posters/disco-ibiza-locomia.jpg",
       "credits": {
         "directors": [
           "Kike Maíllo"
@@ -28024,8 +28024,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 25,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/short_film/poster/3504/DISONANCIA-460x644.jpg",
+      "poster_path": "data/posters/disonancia.jpg",
       "credits": {
         "directors": [
           "Raquel Larrosa"
@@ -28684,8 +28684,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 71,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3005/Domingo-Domingo-Cartel-Web-460x644.jpg",
+      "poster_path": "data/posters/domingo-domingo.jpg",
       "credits": {
         "directors": [
           "Laura García Andreu"
@@ -29349,8 +29349,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 110,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3098/BAJA_RGB_CAT_VERTICAL_EL_47_copia-460x657.jpg",
+      "poster_path": "data/posters/el-47.jpg",
       "credits": {
         "directors": [
           "Marcel Barrena"
@@ -31280,8 +31280,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 114,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/725/autor_af_esp3-460x650.jpg",
+      "poster_path": "data/posters/el-autor.jpg",
       "credits": {
         "directors": [
           "Manuel Martín Cuenca"
@@ -31998,8 +31998,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 84,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/147/cartel_web_elbosco-460x656.jpg",
+      "poster_path": "data/posters/el-bosco-el-jardin-de-los-suenos.jpg",
       "credits": {
         "directors": [
           "José Luis López-Linares"
@@ -32970,8 +32970,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 9,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/short_film/poster/3186/CARTEL_ECDR_20x28_RGB-460x645.jpg",
+      "poster_path": "data/posters/el-cambio-de-rueda.jpg",
       "credits": {
         "directors": [
           "Begoña Arostegui"
@@ -33105,8 +33105,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 134,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3713/AAFF_EC_POSTER_RGB_REF_A4_LOWLOW-460x663.jpg",
+      "poster_path": "data/posters/el-cautivo.jpg",
       "credits": {
         "directors": [
           "Alejandro Amenábar"
@@ -33428,8 +33428,8 @@
       ],
       "countries_raw": "Argentina",
       "duration_minutes": 120,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/El-ciudadano-ilustre.-Cartel-460x654.jpg",
+      "poster_path": "data/posters/el-ciudadano-ilustre.jpg",
       "credits": {
         "directors": [
           "Gastón Duprat",
@@ -33736,8 +33736,8 @@
       ],
       "countries_raw": "Francia",
       "duration_minutes": 173,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/european_film/poster/3391/Cartel_-_El_Conde_de_Montecristo-460x657.jpg",
+      "poster_path": "data/posters/el-conde-de-montecristo.jpg",
       "credits": {
         "directors": [
           "Alexandre de La Patellière",
@@ -34231,8 +34231,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 23,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/short_film/poster/3596/cartel_el_corto_de_ruben-460x657.jpg",
+      "poster_path": "data/posters/el-corto-de-ruben.jpg",
       "credits": {
         "directors": [
           "Jose María Fernández de Vega"
@@ -34587,8 +34587,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 22,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/short_film/poster/3452/ECDUNDV_800x1143px-460x657.jpg",
+      "poster_path": "data/posters/el-cuento-de-una-noche-de-verano.jpg",
       "credits": {
         "directors": [
           "María Herrera"
@@ -35685,8 +35685,8 @@
       ],
       "countries_raw": "Reino Unido",
       "duration_minutes": 104,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/european_film/poster/453/El_editor_de_libros.jpg",
+      "poster_path": "data/posters/el-editor-de-libros.jpg",
       "credits": {
         "directors": [
           "Michael Grandage"
@@ -36164,8 +36164,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 15,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/short_film/poster/651/Cartel_ElERMITA_O-460x657.jpg",
+      "poster_path": "data/posters/el-ermitano.jpg",
       "credits": {
         "directors": [
           "Raúl Díez"
@@ -36416,8 +36416,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 12,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/short_film/poster/3607/OEDA_poster_goya-460x679.jpg",
+      "poster_path": "data/posters/el-estado-del-alma.jpg",
       "credits": {
         "directors": [
           "Sara Naves"
@@ -37021,8 +37021,8 @@
       ],
       "countries_raw": "Hungría",
       "duration_minutes": 102,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/european_film/poster/167/EL_HIJO_DE_SAUL_poster.jpg",
+      "poster_path": "data/posters/el-hijo-de-saul.jpg",
       "credits": {
         "directors": [
           "László Nemes"
@@ -38059,8 +38059,8 @@
       ],
       "countries_raw": "Argentina",
       "duration_minutes": 96,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/iberoamerican_film/poster/3374/cartel_el_jockey-460x681.jpg",
+      "poster_path": "data/posters/el-jockey.jpg",
       "credits": {
         "directors": [
           "Luis Ortega"
@@ -38721,8 +38721,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 107,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3259/El_Llanto_Onesheet_digital_GOYA-460x663.jpg",
+      "poster_path": "data/posters/el-llanto.jpg",
       "credits": {
         "directors": [
           "Pedro Martín-Calero"
@@ -41218,8 +41218,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 98,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/331/El_Olivo_Poster_nacional_DEF-460x657.jpg",
+      "poster_path": "data/posters/el-olivo.jpg",
       "credits": {
         "directors": [
           "Iciar Bollain"
@@ -44710,8 +44710,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 82,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/393/CartelElReyTuerto-460x650.jpg",
+      "poster_path": "data/posters/el-rey-tuerto.jpg",
       "credits": {
         "directors": [
           "Marc Crehuet"
@@ -44953,8 +44953,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 110,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/629/MB_poster_final_envio_Goyas-460x668.jpg",
+      "poster_path": "data/posters/el-secreto-de-marrowbone.jpg",
       "credits": {
         "directors": [
           "Sergio G. Sánchez"
@@ -45360,8 +45360,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 98,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/feature_film/poster/2495/ElSostregroc-460x627.jpg",
+      "poster_path": "data/posters/el-sostre-groc-el-techo-amarillo.jpg",
       "credits": {
         "directors": [
           "Isabel Coixet"
@@ -45831,8 +45831,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 103,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3540/eltalento-460x657.jpg",
+      "poster_path": "data/posters/el-talento.jpg",
       "credits": {
         "directors": [
           "Polo Menárguez"
@@ -46019,8 +46019,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 87,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3470/EL_TESORO_DE_BARRACUDA_-_Poster_ESP-460x663.jpg",
+      "poster_path": "data/posters/el-tesoro-de-barracuda.jpg",
       "credits": {
         "directors": [
           "Adrián García"
@@ -46260,8 +46260,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 13,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/short_film/poster/3154/AR02-460x664.jpg",
+      "poster_path": "data/posters/el-trono.jpg",
       "credits": {
         "directors": [
           "Lucía Jiménez"
@@ -47878,8 +47878,8 @@
       ],
       "countries_raw": "Francia",
       "duration_minutes": 130,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/european_film/poster/326/Elle.jpg",
+      "poster_path": "data/posters/elle.jpg",
       "credits": {
         "directors": [
           "Paul Verhoeven"
@@ -47932,8 +47932,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 99,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3928/ELOY_POSTER_BAJA-460x657.jpg",
+      "poster_path": "data/posters/eloy-de-la-iglesia-adicto-al-cine.jpg",
       "credits": {
         "directors": [
           "Gaizka Urresti"
@@ -47990,8 +47990,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 19,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/short_film/poster/3181/ELS_BUITS6_POSTER-460x690.jpg",
+      "poster_path": "data/posters/els-buits.jpg",
       "credits": {
         "directors": [
           "Isa Luengo",
@@ -49308,8 +49308,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 103,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3479/enemigos-460x651.jpg",
+      "poster_path": "data/posters/enemigos.jpg",
       "credits": {
         "directors": [
           "David Valero Simón"
@@ -50563,8 +50563,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 94,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/554/ESTIU1993_postercat_CARTEL_OK.jpg",
+      "poster_path": "data/posters/estiu-1993.jpg",
       "credits": {
         "directors": [
           "Carla Simón"
@@ -50719,8 +50719,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 105,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3711/ER_Cartel_70x100_FINAL_ESP-460x657.jpg",
+      "poster_path": "data/posters/estrany-riu.jpg",
       "credits": {
         "directors": [
           "Jaume Claret Muxart"
@@ -52256,8 +52256,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 98,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3943/FLORESPARAANTONIO_KEY_70x100_AF__1_-460x657.jpg",
+      "poster_path": "data/posters/flores-para-antonio.jpg",
       "credits": {
         "directors": [
           "Elena Molina",
@@ -52325,8 +52325,8 @@
       ],
       "countries_raw": "Letonia",
       "duration_minutes": 85,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/european_film/poster/3381/FLOW_-_Poster-460x613.jpg",
+      "poster_path": "data/posters/flow-2.jpg",
       "credits": {
         "directors": [
           "Gints Zilbalodis"
@@ -53399,8 +53399,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 91,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3645/GAUA_POSTER_digital-high_CAST-460x657.jpg",
+      "poster_path": "data/posters/gaua.jpg",
       "credits": {
         "directors": [
           "Paul Urkijo Alijo"
@@ -53609,8 +53609,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 110,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/277/GERNIKA_POSTER_20160721_RGB_A4_300ppp-460x651.jpg",
+      "poster_path": "data/posters/gernika-the-movie.jpg",
       "credits": {
         "directors": [
           "Koldo Serra"
@@ -53731,8 +53731,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 12,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/short_film/poster/3516/GILBERT_poster-460x657.jpg",
+      "poster_path": "data/posters/gilbert.jpg",
       "credits": {
         "directors": [
           "Alex Salu",
@@ -54839,8 +54839,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 30,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/short_film/poster/303/AF_Poster_GRAFFITI_Logline_ok-460x654.jpg",
+      "poster_path": "data/posters/graffiti.jpg",
       "credits": {
         "directors": [
           "Lluís Quílez Sala"
@@ -55319,8 +55319,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 99,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3082/dragonkeeper_poster-460x657.jpg",
+      "poster_path": "data/posters/guardiana-de-dragones-dragonkeeper.jpg",
       "credits": {
         "directors": [
           "Li Jiangping",
@@ -55894,8 +55894,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 114,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/720/Handia_Cast-460x654.jpg",
+      "poster_path": "data/posters/handia.jpg",
       "credits": {
         "directors": [
           "Aitor Arregi",
@@ -56332,8 +56332,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 93,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3884/CARTEL_VERTICAL_LEIVA_CASTELLANO-460x660.jpg",
+      "poster_path": "data/posters/hasta-que-me-quede-sin-voz.jpg",
       "credits": {
         "directors": [
           "Lucas Nolla",
@@ -56793,8 +56793,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 18,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/short_film/poster/2871/Herederas_Cartel_l-460x651.jpg",
+      "poster_path": "data/posters/herederas.jpg",
       "credits": {
         "directors": [
           "Silvia Venegas Venegas"
@@ -58944,8 +58944,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 72,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/feature_film/poster/2667/AF2_DIGITAL_1357x1940px_IBERIA_1Mb-460x658.jpg",
+      "poster_path": "data/posters/iberia-naturaleza-infinita.jpg",
       "credits": {
         "directors": [
           "Arturo Menor"
@@ -59216,8 +59216,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 116,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/592/INCIERTA_GLORIA_Cartel_ESP-460x654.jpg",
+      "poster_path": "data/posters/incierta-gloria.jpg",
       "credits": {
         "directors": [
           "Agustí Villaronga"
@@ -59669,8 +59669,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 88,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/feature_film/poster/2534/INSPECTOR_SUN_POSTER_A_ESP_DELIVERY_low-460x654.jpg",
+      "poster_path": "data/posters/inspector-sun-y-la-maldicion-de-la-viuda-negra.jpg",
       "credits": {
         "directors": [
           "Julio Soto Gúrpide"
@@ -60404,8 +60404,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 104,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/CARTEL-IRATI-def-def-def-copia-460x657.jpg",
+      "poster_path": "data/posters/irati.jpg",
       "credits": {
         "directors": [
           "Paul Urkijo Alijo"
@@ -63689,8 +63689,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 110,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3606/LA_BUENA_LETRA_POSTER_LOW_AAFF-460x657.jpg",
+      "poster_path": "data/posters/la-buena-letra.jpg",
       "credits": {
         "directors": [
           "Celia Rico Clavellino"
@@ -64195,8 +64195,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 80,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/2024_04_13_CARTEL_LA_CASA_PANTALLAS_sRGB_NO_EDIT_PEQ_REDES_BFF-460x657.jpg",
+      "poster_path": "data/posters/la-casa.jpg",
       "credits": {
         "directors": [
           "Álex Montoya"
@@ -64546,8 +64546,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 106,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3899/la_cena-460x657.jpg",
+      "poster_path": "data/posters/la-cena.jpg",
       "credits": {
         "directors": [
           "Manuel Gómez Pereira"
@@ -65594,8 +65594,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 110,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/feature_film/poster/2480/LaConsagracionDeLaPrimavera_70x100_Final_02_page-0001-460x657.jpg",
+      "poster_path": "data/posters/la-consagracion-de-la-primavera.jpg",
       "credits": {
         "directors": [
           "Fernando Franco"
@@ -65668,8 +65668,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 116,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/feature_film/poster/2662/LCDP_CARTEL_WEB-460x657.jpg",
+      "poster_path": "data/posters/la-contadora-de-peliculas.jpg",
       "credits": {
         "directors": [
           "Lone Scherfig"
@@ -65760,8 +65760,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 19,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/short_film/poster/3489/CARTEL_LCQNT_2-460x613.jpg",
+      "poster_path": "data/posters/la-conversacion-que-nunca-tuvimos.jpg",
       "credits": {
         "directors": [
           "Cristina Urgel"
@@ -65814,8 +65814,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 115,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/700/LA_CORDILLERA_TEASER_POSTER_OT_102195_V2.jpg",
+      "poster_path": "data/posters/la-cordillera.jpg",
       "credits": {
         "directors": [
           "Santiago Mitre"
@@ -66435,8 +66435,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 107,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/feature_film/poster/2658/LaErmita_Cartel_Baja-460x654.jpg",
+      "poster_path": "data/posters/la-ermita.jpg",
       "credits": {
         "directors": [
           "Carlota Pereda"
@@ -66621,8 +66621,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 128,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3037/Poster-LaEstrellaAzul-751x1070--460x655.jpg",
+      "poster_path": "data/posters/la-estrella-azul.jpg",
       "credits": {
         "directors": [
           "Javier Macipe"
@@ -67353,8 +67353,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 107,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3413/AF_Cartel_LaFuria_Net_NoPrint_BAJA-460x663.jpg",
+      "poster_path": "data/posters/la-furia.jpg",
       "credits": {
         "directors": [
           "Gemma Blasco"
@@ -68094,8 +68094,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 20,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/short_film/poster/3101/La_gran_obra._Cartel_def_p-460x681.jpg",
+      "poster_path": "data/posters/la-gran-obra.jpg",
       "credits": {
         "directors": [
           "Àlex Lora"
@@ -68356,8 +68356,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 95,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3251/CARTEL-COHETE-LGD-YERAI-CORTES-01-460x657.jpg",
+      "poster_path": "data/posters/la-guitarra-flamenca-de-yerai-cortes.jpg",
       "credits": {
         "directors": [
           "Antón Álvarez"
@@ -68428,8 +68428,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 105,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3279/LHDAL_MAIN_CON_FECHA-460x661.jpg",
+      "poster_path": "data/posters/la-habitacion-de-al-lado-the-room-next-door.jpg",
       "credits": {
         "directors": [
           "Pedro Almodóvar"
@@ -69230,8 +69230,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 118,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/AAFF_POSTER_LA-INFILTRADA_GOYAS_70X100-460x657.jpg",
+      "poster_path": "data/posters/la-infiltrada.jpg",
       "credits": {
         "directors": [
           "Arantxa Echevarría"
@@ -69511,8 +69511,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 15,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/short_film/poster/325/La_invitaci_n._Cartel-460x659.jpg",
+      "poster_path": "data/posters/la-invitacion.jpg",
       "credits": {
         "directors": [
           "Susana Casares"
@@ -70663,8 +70663,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 110,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/681/TBS_CARTEL_TEST16-460x657.jpg",
+      "poster_path": "data/posters/la-libreria.jpg",
       "credits": {
         "directors": [
           "Isabel Coixet"
@@ -72111,8 +72111,8 @@
       ],
       "countries_raw": "Chile",
       "duration_minutes": 110,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/iberoamerican_film/poster/3968/1344x1920_Web_Misteriosa__1_-460x657.jpg",
+      "poster_path": "data/posters/la-misteriosa-mirada-del-flamenco.jpg",
       "credits": {
         "directors": [
           "Diego Céspedes"
@@ -72464,8 +72464,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 8,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/short_film/poster/3240/LA_MUJER_ILUSTRADA-POSTER-460x651.jpg",
+      "poster_path": "data/posters/la-mujer-ilustrada.jpg",
       "credits": {
         "directors": [
           "Isabel Herguera"
@@ -73825,8 +73825,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 97,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/feature_film/poster/2615/La_paradoja_de_Antares_web-460x657.jpg",
+      "poster_path": "data/posters/la-paradoja-de-antares.jpg",
       "credits": {
         "directors": [
           "Luis Tinoco"
@@ -74073,8 +74073,8 @@
       ],
       "countries_raw": "Puerto Rico",
       "duration_minutes": 92,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/iberoamerican_film/poster/2878/Poster_La_Pecera-Web-460x677.jpg",
+      "poster_path": "data/posters/la-pecera.jpg",
       "credits": {
         "directors": [
           "Glorimar Marrero Sánchez"
@@ -74410,8 +74410,8 @@
       ],
       "countries_raw": "Costa Rica",
       "duration_minutes": 80,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/iberoamerican_film/poster/3932/AFICHE-LA_PIEL_DEL_AGUA__SP-460x657.jpg",
+      "poster_path": "data/posters/la-piel-del-agua.jpg",
       "credits": {
         "directors": [
           "Patricia Velásquez"
@@ -74831,8 +74831,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 10,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/short_film/poster/2443/La_primavera_siempre_vuelve_Cartel_con_laureles_GOYA-460x654.jpeg",
+      "poster_path": "data/posters/la-primavera-siempre-vuelve.jpg",
       "credits": {
         "directors": [
           "Alicia Núñez Puerto"
@@ -75008,8 +75008,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 102,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/435/AAFF_CARTEL_PROXIMAPIEL_CASTELLANO-460x657.jpg",
+      "poster_path": "data/posters/la-proxima-piel.jpg",
       "credits": {
         "directors": [
           "Isa Campo",
@@ -75076,8 +75076,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 84,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/263/LPA_poster_ESP_HR-460x658.jpg",
+      "poster_path": "data/posters/la-puerta-abierta.jpg",
       "credits": {
         "directors": [
           "Marina Seresesky"
@@ -75214,8 +75214,8 @@
       ],
       "countries_raw": "Italia",
       "duration_minutes": 130,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/european_film/poster/3382/laquimeracartel-460x657.jpg",
+      "poster_path": "data/posters/la-quimera.jpg",
       "credits": {
         "directors": [
           "Alice Rohrwacher"
@@ -75326,8 +75326,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 128,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/LRDE_CARTEL_ONLINE_AF-460x657.jpg",
+      "poster_path": "data/posters/la-reina-de-espana.jpg",
       "credits": {
         "directors": [
           "Fernando Trueba"
@@ -75793,8 +75793,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 144,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/es-ES_sots_main_theatrical_vertical_27x40_cmyk_pre_1-460x681.jpg",
+      "poster_path": "data/posters/la-sociedad-de-la-nieve.jpg",
       "credits": {
         "directors": [
           "J.A. Bayona"
@@ -76421,8 +76421,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 106,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/feature_film/poster/2960/LT_CARTEL_ONLINE__1_-460x657.jpg",
+      "poster_path": "data/posters/la-ternura.jpg",
       "credits": {
         "directors": [
           "Vicente Villanueva"
@@ -76685,8 +76685,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 151,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3542/La_Tregua_V-460x651.jpg",
+      "poster_path": "data/posters/la-tregua.jpg",
       "credits": {
         "directors": [
           "Miguel Ángel Vivas"
@@ -77934,8 +77934,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 114,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3246/VIRO_Poster-460x651.jpg",
+      "poster_path": "data/posters/la-virgen-roja-2.jpg",
       "credits": {
         "directors": [
           "Paula Ortiz"
@@ -78370,8 +78370,8 @@
       ],
       "countries_raw": "Reino Unido",
       "duration_minutes": 106,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/european_film/poster/3392/lzdi_cartel-460x690.jpg",
+      "poster_path": "data/posters/la-zona-de-interes.jpg",
       "credits": {
         "directors": [
           "Jonathan Glazer"
@@ -78422,8 +78422,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 93,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/feature_film/poster/2439/LABORDETA_Cartel-460x655.jpg",
+      "poster_path": "data/posters/labordeta-un-hombre-sin-mas.jpg",
       "credits": {
         "directors": [
           "Gaizka Urresti",
@@ -79560,8 +79560,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 86,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/feature_film/poster/2796/LCEB_CARTEL_FECHA_70x100_RGB_150dpi-460x657.jpeg",
+      "poster_path": "data/posters/las-chicas-estan-bien.jpg",
       "credits": {
         "directors": [
           "Itsaso Arana"
@@ -79832,8 +79832,8 @@
       ],
       "countries_raw": "México",
       "duration_minutes": 105,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/iberoamerican_film/poster/397/Po_ster_Las_Elegidas_-_GESTOR-460x677.jpg",
+      "poster_path": "data/posters/las-elegidas.jpg",
       "credits": {
         "directors": [
           "David Pablos"
@@ -80512,8 +80512,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 137,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/feature_film/poster/2330/POSTER_LNDC-460x576.png",
+      "poster_path": "data/posters/las-ninas-de-cristal.png",
       "credits": {
         "directors": [
           "Jota Linares"
@@ -80578,8 +80578,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 40,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/short_film/poster/3034/CARTEL_LASNOVIASDELSUR-460x651.jpg",
+      "poster_path": "data/posters/las-novias-del-sur.jpg",
       "credits": {
         "directors": [
           "Elena López Riera"
@@ -81341,8 +81341,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 101,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3767/Leo___Lou._Cartel_p.jpg",
+      "poster_path": "data/posters/leo-lou.jpg",
       "credits": {
         "directors": [
           "Carlos Solano"
@@ -82864,8 +82864,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 9,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/short_film/poster/3188/LLL_cartel-460x657.jpg",
+      "poster_path": "data/posters/lola-lolita-lolaza.jpg",
       "credits": {
         "directors": [
           "Mabel Lozano"
@@ -83190,8 +83190,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 20,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/NUEVOCARTEL_LOS30_v3-460x648.jpg",
+      "poster_path": "data/posters/los-30-no-son-los-nuevos-20.jpg",
       "credits": {
         "directors": [
           "Juan Vicente Castillejo Navarro"
@@ -84407,8 +84407,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 18,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/los-desheredados-poster-esp-digital-460x644.jpg",
+      "poster_path": "data/posters/los-desheredados.jpg",
       "credits": {
         "directors": [
           "Laura Ferrés"
@@ -84467,8 +84467,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 101,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3056/LOS_DESTELLOS_POSTER_VERTICAL_SANSE_AAFF_LOW-460x657.jpg",
+      "poster_path": "data/posters/los-destellos.jpg",
       "credits": {
         "directors": [
           "Pilar Palomero"
@@ -84561,8 +84561,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 117,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3725/CARTEL_SIN_FECHA-460x657.jpg",
+      "poster_path": "data/posters/los-domingos.jpg",
       "credits": {
         "directors": [
           "Alauda Ruiz de Azúa"
@@ -86240,8 +86240,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 95,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3012/LPA_poster70X100_cast_low-460x655.jpg",
+      "poster_path": "data/posters/los-pequenos-amores.jpg",
       "credits": {
         "directors": [
           "Celia Rico Clavellino"
@@ -86543,8 +86543,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 109,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3863/LOSTIGRES_OFICIAL_KA_VERTICAL_SIN_FECHA-460x651.jpg",
+      "poster_path": "data/posters/los-tigres.jpg",
       "credits": {
         "directors": [
           "Alberto Rodríguez"
@@ -86678,8 +86678,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 108,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3446/Cartel_en_baja_LT-460x660.jpg",
+      "poster_path": "data/posters/los-tortuga.jpg",
       "credits": {
         "directors": [
           "Belén Funes"
@@ -86824,8 +86824,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 127,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/715/LPHE_1Sht_FM2-460x681.jpg",
+      "poster_path": "data/posters/loving-pablo.jpg",
       "credits": {
         "directors": [
           "Fernando León de Aranoa"
@@ -88009,8 +88009,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 11,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/short_film/poster/378/Cartel_Made-in-Spain_lores-460x651.jpg",
+      "poster_path": "data/posters/made-in-spain.jpg",
       "credits": {
         "directors": [
           "Coke Riobóo"
@@ -89348,8 +89348,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 102,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/feature_film/poster/1992/AAFF_MLNZ_POSTER_25_01_2022-460x654.jpg",
+      "poster_path": "data/posters/malnazidos.jpg",
       "credits": {
         "directors": [
           "Alberto de Toro",
@@ -89549,8 +89549,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 48,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/short_film/poster/3035/MMNTL_poster-460x654.jpeg",
+      "poster_path": "data/posters/mamantula.jpg",
       "credits": {
         "directors": [
           "Ion de Sosa"
@@ -89699,8 +89699,8 @@
       ],
       "countries_raw": "Brasil",
       "duration_minutes": 107,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/iberoamerican_film/poster/3977/MANAS_POSTER_ESP_250925-460x672.jpg",
+      "poster_path": "data/posters/manas.jpg",
       "credits": {
         "directors": [
           "Marianna Brennand"
@@ -90680,8 +90680,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 101,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3263/MARCO_poster-estreno_70x100_low-460x651.jpg",
+      "poster_path": "data/posters/marco.jpg",
       "credits": {
         "directors": [
           "Aitor Arregi",
@@ -90917,8 +90917,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 96,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/396/CARTEL_MARIA_SAN_SEBASTIAN_DEFINITIVO-460x657.jpg",
+      "poster_path": "data/posters/maria-y-los-demas.jpg",
       "credits": {
         "directors": [
           "Nely Reguera"
@@ -91241,8 +91241,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 83,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3198/Mariposa_negras-460x651.jpg",
+      "poster_path": "data/posters/mariposas-negras.jpg",
       "credits": {
         "directors": [
           "David Baute"
@@ -91299,8 +91299,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 84,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3016/Cartel_Marisol-460x575.jpg",
+      "poster_path": "data/posters/marisol-llamame-pepa.jpg",
       "credits": {
         "directors": [
           "Blanca Torres"
@@ -91975,8 +91975,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 115,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3534/MAS_poster-digital_low_CAST-460x654.jpg",
+      "poster_path": "data/posters/maspalomas.jpg",
       "credits": {
         "directors": [
           "Aitor Arregi",
@@ -93092,8 +93092,8 @@
       ],
       "countries_raw": "Costa Rica y España",
       "duration_minutes": 90,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3344/MCA_Poster_ESP_FULL-460x681.jpg",
+      "poster_path": "data/posters/memorias-de-un-cuerpo-que-arde.jpg",
       "credits": {
         "directors": [
           "Antonella Sudasassi Furniss"
@@ -93478,8 +93478,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 100,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3619/MiAmigaEva_Poster_LogoSSIFF_100x70-460x657.jpg",
+      "poster_path": "data/posters/mi-amiga-eva.jpg",
       "credits": {
         "directors": [
           "Cesc Gay"
@@ -93715,8 +93715,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 86,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3273/CARTEL_MI_HERMANO_ALI_AF3_DIGITAL_ESP_2000px-460x657.jpg",
+      "poster_path": "data/posters/mi-hermano-ali.jpg",
       "credits": {
         "directors": [
           "Paula Palacios"
@@ -94974,8 +94974,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 125,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/feature_film/poster/2576/MODELO_77-CMYK_680x980_Final-460x662.jpg",
+      "poster_path": "data/posters/modelo-77.jpg",
       "credits": {
         "directors": [
           "Alberto Rodríguez"
@@ -95214,8 +95214,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 88,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/feature_film/poster/2643/Poster_Momias_Academia-460x661.jpg",
+      "poster_path": "data/posters/momias.jpg",
       "credits": {
         "directors": [
           "Juan Jesús García Galocha \"Galo\""
@@ -95583,8 +95583,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 104,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/556/9072017_MORIR_ACO_70x100_240_BB_AAFF_V_CC-460x652.jpg",
+      "poster_path": "data/posters/morir.jpg",
       "credits": {
         "directors": [
           "Fernando Franco"
@@ -95985,8 +95985,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 88,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/804/Muchos_hijos__un_mono_y_un_castillo._Cartel_def-460x657.jpg",
+      "poster_path": "data/posters/muchos-hijos-un-mono-y-un-castillo.jpg",
       "credits": {
         "directors": [
           "Gustavo Salmerón"
@@ -96681,8 +96681,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 100,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3544/Muy_lejos_-_Cartel-460x690.jpg",
+      "poster_path": "data/posters/muy-lejos.jpg",
       "credits": {
         "directors": [
           "Gerard Oms"
@@ -97966,8 +97966,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 96,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/No-culpes-al-karma-de-lo-que-te-pasa-por-gilipollas.-Cartel-460x655.jpg",
+      "poster_path": "data/posters/no-culpes-al-karma-de-lo-que-te-pasa-por-gilipollas.jpg",
       "credits": {
         "directors": [
           "Maria Ripoll"
@@ -98032,8 +98032,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 102,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/No-estas-sola-cartel-460x655.jpg",
+      "poster_path": "data/posters/no-estas-sola.jpg",
       "credits": {
         "directors": [
           "Almudena Carracedo",
@@ -98459,8 +98459,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 96,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/757/NSDA-CARTEL_06OCT17-460x657.jpg",
+      "poster_path": "data/posters/no-se-decir-adios.jpg",
       "credits": {
         "directors": [
           "Lino Escalera"
@@ -98940,8 +98940,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 75,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3439/Norbert_Poster_68x98_AF_ES-460x658.jpg",
+      "poster_path": "data/posters/norbert.jpg",
       "credits": {
         "directors": [
           "José Corral Llorente"
@@ -99261,8 +99261,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 67,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/702/A_ALDEA-460x645.jpg",
+      "poster_path": "data/posters/nur-eta-herensugearen-tenplua.jpg",
       "credits": {
         "directors": [
           "Juanba Berasategi"
@@ -100044,8 +100044,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 70,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3620/Poster_OTI_CAT-460x654.jpg",
+      "poster_path": "data/posters/olivia-y-el-terremoto-invisible.jpg",
       "credits": {
         "directors": [
           "Irene Iborra Rizo"
@@ -100103,8 +100103,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 85,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/470/Poster-Goyas-2017-460x691.jpg",
+      "poster_path": "data/posters/omega.jpg",
       "credits": {
         "directors": [
           "Gervasio Iglesias",
@@ -100780,8 +100780,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 93,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/feature_film/poster/2473/Oswald-El-Falsificardor-MagaZinema-460x657.jpg",
+      "poster_path": "data/posters/oswald-el-falsificador.jpg",
       "credits": {
         "directors": [
           "Kike Maíllo"
@@ -101180,8 +101180,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 91,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/363/Cartel_OZZY-460x657.jpg",
+      "poster_path": "data/posters/ozzy.jpg",
       "credits": {
         "directors": [
           "Alberto Rodríguez Rodríguez"
@@ -101881,8 +101881,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 20,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/short_film/poster/372/Poster_Palabras_de_Caramelo_GOYA_2016_Web-460x690.jpg",
+      "poster_path": "data/posters/palabras-de-caramelo.jpg",
       "credits": {
         "directors": [
           "Juan Antonio Moreno Amador"
@@ -102558,8 +102558,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 111,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3704/PAUA_MAIN_KA_copia-460x650.jpg",
+      "poster_path": "data/posters/parecido-a-un-asesinato.jpg",
       "credits": {
         "directors": [
           "Antonio Hernández"
@@ -102625,8 +102625,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 15,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/short_film/poster/2634/Poster_Paris_70_Principal-460x657.jpg",
+      "poster_path": "data/posters/paris-70.jpg",
       "credits": {
         "directors": [
           "Dani Feixas"
@@ -104486,8 +104486,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 106,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3115/POLVO_SERAN_Poster-460x644.jpg",
+      "poster_path": "data/posters/polvo-seran.jpg",
       "credits": {
         "directors": [
           "Carlos Marques-Marcet"
@@ -104614,8 +104614,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 98,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3282/AAFF_Pordondepasaelsilencio_70x100cm_v2-460x657.jpg",
+      "poster_path": "data/posters/por-donde-pasa-el-silencio.jpg",
       "credits": {
         "directors": [
           "Sandra Romero"
@@ -105497,8 +105497,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 76,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/Psiconautas-460x648.png",
+      "poster_path": "data/posters/psiconautas-los-ninos-olvidados.png",
       "credits": {
         "directors": [
           "Alberto Vázquez",
@@ -105558,8 +105558,8 @@
       ],
       "countries_raw": "Argentina",
       "duration_minutes": 111,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/iberoamerican_film/poster/2977/cartel_puan-460x675.jpg",
+      "poster_path": "data/posters/puan.jpg",
       "credits": {
         "directors": [
           "Benjamín Naishtat",
@@ -105750,8 +105750,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 127,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/148/Cartel_Final__0_80-460x654.jpg",
+      "poster_path": "data/posters/que-dios-nos-perdone.jpg",
       "credits": {
         "directors": [
           "Rodrigo Sorogoyen"
@@ -107456,8 +107456,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 94,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3030/CARTEL_RITA-460x657.jpg",
+      "poster_path": "data/posters/rita.jpg",
       "credits": {
         "directors": [
           "Paz Vega"
@@ -107609,8 +107609,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 87,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/Rock-Bottom.-Cartel-460x654.jpg",
+      "poster_path": "data/posters/rock-bottom.jpg",
       "credits": {
         "directors": [
           "María Trénor"
@@ -107981,8 +107981,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 111,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3632/romeria-460x661.jpg",
+      "poster_path": "data/posters/romeria.jpg",
       "credits": {
         "directors": [
           "Carla Simón"
@@ -108161,8 +108161,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 112,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3883/RONDALLAS_TEASER_CAPAS_280825_baja-460x657.jpg",
+      "poster_path": "data/posters/rondallas.jpg",
       "credits": {
         "directors": [
           "Daniel Sánchez Arévalo"
@@ -109333,8 +109333,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 111,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3245/SalveMaria_sinfecha_castellano-460x681.jpg",
+      "poster_path": "data/posters/salve-maria.jpg",
       "credits": {
         "directors": [
           "Mar Coll"
@@ -110292,8 +110292,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 110,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3032/SEGUNDO_PREMIO_CARTEL_CAPAS_DEF-retoquelogosMALAGA_11zon-460x657.jpg",
+      "poster_path": "data/posters/segundo-premio.jpg",
       "credits": {
         "directors": [
           "Isaki Lacuesta",
@@ -110475,8 +110475,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 89,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/548/CARTEL_DEF-460x655.jpg",
+      "poster_path": "data/posters/selfie.jpg",
       "credits": {
         "directors": [
           "Víctor García León"
@@ -110623,8 +110623,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 29,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/short_film/poster/3249/Cartel_SemillasdeKivu-460x657.jpg",
+      "poster_path": "data/posters/semillas-de-kivu.jpg",
       "credits": {
         "directors": [
           "Carlos Valle",
@@ -110855,8 +110855,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 18,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/short_film/poster/3683/Cartel_70x100_ALTA_SEXO_A_LOS_70-460x657.jpg",
+      "poster_path": "data/posters/sexo-a-los-70.jpg",
       "credits": {
         "directors": [
           "Vanesa Romero"
@@ -111458,8 +111458,8 @@
       ],
       "countries_raw": "Venezuela",
       "duration_minutes": 100,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/iberoamerican_film/poster/2822/Venezuela_Distribution_Poster-460x681.jpg",
+      "poster_path": "data/posters/simon.jpg",
       "credits": {
         "directors": [
           "Diego Vicentini"
@@ -112106,8 +112106,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 125,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/feature_film/poster/2294/sintiendolo_cartel-460x659.jpg",
+      "poster_path": "data/posters/sintiendolo-mucho.jpg",
       "credits": {
         "directors": [
           "Fernando León de Aranoa"
@@ -112176,8 +112176,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 110,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3469/Cartel_Sirat-460x657.jpg",
+      "poster_path": "data/posters/sirat.jpg",
       "credits": {
         "directors": [
           "Oliver Laxe"
@@ -113690,8 +113690,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 18,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/short_film/poster/2375/CARTEL-SORDA-460x687.jpg",
+      "poster_path": "data/posters/sorda.jpg",
       "credits": {
         "directors": [
           "Eva Libertad",
@@ -113750,8 +113750,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 99,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3420/Sorda_POSTER_Web-460x657.png",
+      "poster_path": "data/posters/sorda-2.png",
       "credits": {
         "directors": [
           "Eva Libertad"
@@ -113939,8 +113939,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 112,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3189/SOY_NEVENKA_POSTER_VERTICAL_LOW_AAFF_2024_07_29-460x657.jpg",
+      "poster_path": "data/posters/soy-nevenka.jpg",
       "credits": {
         "directors": [
           "Iciar Bollain"
@@ -114615,8 +114615,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 92,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3268/superklauscartel-460x660.jpg",
+      "poster_path": "data/posters/superklaus.jpg",
       "credits": {
         "directors": [
           "Andrea Sebastiá",
@@ -115178,8 +115178,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 81,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/575/TADEOJONES2_CARTEL_ONLINE_AF-460x657.jpg",
+      "poster_path": "data/posters/tadeo-jones-2-el-secreto-del-rey-midas.jpg",
       "credits": {
         "directors": [
           "David Alonso",
@@ -115239,8 +115239,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 89,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/feature_film/poster/2467/Poster_Oficial_Definitivo_70x100-460x653.jpg",
+      "poster_path": "data/posters/tadeo-jones-3-la-tabla-esmeralda.jpg",
       "credits": {
         "directors": [
           "Enrique Gato"
@@ -115714,8 +115714,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 88,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/feature_film/poster/344/IRA__CARTEL_INTERNET-460x651.jpg",
+      "poster_path": "data/posters/tarde-para-la-ira.jpg",
       "credits": {
         "directors": [
           "Raúl Arévalo"
@@ -115897,8 +115897,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 125,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3496/TARDES_DE_SOLEDAD_V6__1_-460x657.jpg",
+      "poster_path": "data/posters/tardes-de-soledad.jpg",
       "credits": {
         "directors": [
           "Albert Serra"
@@ -116265,8 +116265,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 107,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/feature_film/poster/2785/Te_estoy_amando_locamente_-_Cartel-460x657.jpg",
+      "poster_path": "data/posters/te-estoy-amando-locamente.jpg",
       "credits": {
         "directors": [
           "Alejandro Marín"
@@ -117293,8 +117293,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 14,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/short_film/poster/570/Cartel_baja-460x681.jpg",
+      "poster_path": "data/posters/the-fourth-kingdom.jpg",
       "credits": {
         "directors": [
           "Adán Aliaga",
@@ -117473,8 +117473,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 23,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/short_film/poster/3631/TPR_CARTEL-460x644.jpg",
+      "poster_path": "data/posters/the-painters-room.jpg",
       "credits": {
         "directors": [
           "María Colomer Canyelles"
@@ -117757,8 +117757,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 25,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/short_film/poster/368/TRC_Cartel-460x652.jpg",
+      "poster_path": "data/posters/the-resurrection-club.jpg",
       "credits": {
         "directors": [
           "Álvaro Corcuera",
@@ -117815,8 +117815,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 76,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3445/the_sleeper-460x681.jpg",
+      "poster_path": "data/posters/the-sleeper-el-caravaggio-perdido.jpg",
       "credits": {
         "directors": [
           "Álvaro Longoria"
@@ -118459,8 +118459,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 15,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/short_film/poster/328/timecode.jpg",
+      "poster_path": "data/posters/timecode.jpg",
       "credits": {
         "directors": [
           "Juanjo Giménez Peña"
@@ -118521,8 +118521,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 119,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/feature_film/poster/2613/AF_ESTRENO_DIGITAL_TIN_TINA__2_-460x663.jpg",
+      "poster_path": "data/posters/tin-tina.jpg",
       "credits": {
         "directors": [
           "Rubin Stein"
@@ -119141,8 +119141,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 6,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/short_film/poster/2706/TODO_BIEN_Cartel-460x644.jpg",
+      "poster_path": "data/posters/todo-bien.jpg",
       "credits": {
         "directors": [
           "Diana Acién Manzorro"
@@ -119338,8 +119338,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 7,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/short_film/poster/2605/Cartel_TEP_-_CURTS-460x682.png",
+      "poster_path": "data/posters/todo-esta-perdido.png",
       "credits": {
         "directors": [
           "Carla Pereira",
@@ -120910,8 +120910,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 14,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/Cartel-Trazos-del-Alma-V2-Laureles-20221109-460x595.jpg",
+      "poster_path": "data/posters/trazos-del-alma.jpg",
       "credits": {
         "directors": [
           "Rafa Arroyo"
@@ -121806,8 +121806,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 10,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/short_film/poster/2625/Cartel-A25-460x651.jpg",
+      "poster_path": "data/posters/txotxongiloa.jpg",
       "credits": {
         "directors": [
           "Sonia Estévez"
@@ -121863,8 +121863,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 3,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/short_film/poster/367/CartelUka-460x616.png",
+      "poster_path": "data/posters/uka.png",
       "credits": {
         "directors": [
           "Valle Comba Canales"
@@ -122617,8 +122617,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 3,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/short_film/poster/602/Un_dia_en_el_parque_Portada-460x650.jpg",
+      "poster_path": "data/posters/un-dia-en-el-parque.jpg",
       "credits": {
         "directors": [
           "Diego Porral"
@@ -123050,8 +123050,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 107,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3558/UFELB_-_Teaser_Poster__1_-460x681.jpeg",
+      "poster_path": "data/posters/un-fantasma-en-la-batalla.jpg",
       "credits": {
         "directors": [
           "Agustín Díaz Yanes"
@@ -124126,8 +124126,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 20,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/short_film/poster/3416/Cartel_UCELP_Final_800px-460x657.jpg",
+      "poster_path": "data/posters/una-cabeza-en-la-pared.jpg",
       "credits": {
         "directors": [
           "Manuel Manrique"
@@ -124362,8 +124362,8 @@
       ],
       "countries_raw": "Chile",
       "duration_minutes": 104,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/iberoamerican_film/poster/668/Chile_Afiche_Una_Mujer_Fant_stica_10_x15-460x659.jpg",
+      "poster_path": "data/posters/una-mujer-fantastica.jpg",
       "credits": {
         "directors": [
           "Sebastián Lelio"
@@ -124424,8 +124424,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 105,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/Una-noche-con-adela.-Cartel-DEF-460x758.jpg",
+      "poster_path": "data/posters/una-noche-con-adela.jpg",
       "credits": {
         "directors": [
           "Hugo Ruiz"
@@ -124653,8 +124653,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 114,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3421/LQCartel-460x663.jpg",
+      "poster_path": "data/posters/una-quinta-portuguesa.jpg",
       "credits": {
         "directors": [
           "Avelina Prat"
@@ -124737,8 +124737,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 12,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/short_film/poster/2704/CARTEL_UTDM_Julio_2023-460x624.jpg",
+      "poster_path": "data/posters/una-terapia-de-mierda.jpg",
       "credits": {
         "directors": [
           "Javier Polo"
@@ -124794,8 +124794,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 107,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2023/11/system/uploads/feature_film/poster/2664/UNA_VIDA_1MB-460x657.jpg",
+      "poster_path": "data/posters/una-vida-no-tan-simple.jpg",
       "credits": {
         "directors": [
           "Félix Viscarret"
@@ -124855,8 +124855,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 92,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/feature_film/poster/2540/UW_CARTEL_OFICIAL_800px-460x644.jpg",
+      "poster_path": "data/posters/unicorn-wars.jpg",
       "credits": {
         "directors": [
           "Alberto Vázquez"
@@ -125130,8 +125130,8 @@
       ],
       "countries_raw": "Bolivia",
       "duration_minutes": 87,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2022/11/system/uploads/iberoamerican_film/poster/2506/utama-460x657.jpg",
+      "poster_path": "data/posters/utama.jpg",
       "credits": {
         "directors": [
           "Alejandro Loayza Grisi"
@@ -125874,8 +125874,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 97,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3317/VeranoEnDiciemvre-Poster-v11-460x657.jpg",
+      "poster_path": "data/posters/verano-en-diciembre.jpg",
       "credits": {
         "directors": [
           "Carolina África"
@@ -127722,8 +127722,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 114,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3180/VLV_70x100_FINAL_RGB_72ppp_web-460x657.jpg",
+      "poster_path": "data/posters/volvereis.jpg",
       "credits": {
         "directors": [
           "Jonás Trueba"
@@ -128610,8 +128610,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 12,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/short_film/poster/560/woody.jpg",
+      "poster_path": "data/posters/woody-woody.jpg",
       "credits": {
         "directors": [
           "Jaume Carrió"
@@ -129211,8 +129211,8 @@
       ],
       "countries_raw": "Reino Unido",
       "duration_minutes": 100,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2016/11/system/uploads/european_film/poster/414/Yo_Daniel_Blake.jpg",
+      "poster_path": "data/posters/yo-daniel-blake.jpg",
       "credits": {
         "directors": [
           "Ken Loach"
@@ -129960,8 +129960,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 90,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2017/11/system/uploads/feature_film/poster/599/CARTEL_ZONA_HOSTIL_300ppp-460x657.jpg",
+      "poster_path": "data/posters/zona-hostil.jpg",
       "credits": {
         "directors": [
           "Adolfo Martínez"
@@ -130057,8 +130057,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 25,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/short_film/poster/3432/ZONA_WAO_100x70_CMYK_2025_GOYA-460x655.jpg",
+      "poster_path": "data/posters/zona-wao.jpg",
       "credits": {
         "directors": [
           "Nagore Eceiza Mugica"
@@ -130626,8 +130626,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 122,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2025/12/system/uploads/feature_film/poster/3594/Cartel__CLRB__-_Goya.png",
+      "poster_path": "data/posters/caigan-las-rosas-blancas.png",
       "credits": {
         "directors": [
           "Albertina Carri"
@@ -130810,8 +130810,8 @@
       ],
       "countries_raw": "Española",
       "duration_minutes": 99,
-      "poster_url": null,
-      "poster_path": null,
+      "poster_url": "https://www.premiosgoya.com/wp-content/uploads/2024/11/system/uploads/feature_film/poster/3327/EEE_CARTEL_LR_SRGB-460x651.jpg",
+      "poster_path": "data/posters/es-el-enemigo-la-pelicula-de-gila.jpg",
       "credits": {
         "directors": [
           "Alexis Morante"

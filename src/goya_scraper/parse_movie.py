@@ -29,7 +29,13 @@ SELECTOR_AWARDS_COUNT = ".pelicula__header__premios--goyas span"
 # page also carries the social icons, so a bare `img` would pick those up.
 # `src` is already the largest size in the srcset, so there is nothing to
 # choose between sizes and no need to parse srcset.
-SELECTOR_POSTER = "img.attachment-cartel"
+#
+# Two classes, because the theme is not consistent: 1459 of the 1678 films
+# tag theirs `attachment-cartel` and the other 219 `attachment-galeria`. A
+# selector for only the first silently loses the second group, which is
+# exactly what it did the first time (ADR-039). No film has both, and no
+# film has more than one content image.
+SELECTOR_POSTER = "img.attachment-cartel, img.attachment-galeria"
 
 # The page also carries a list of the awards the film won. It mostly agrees with
 # the edition pages, but not always, and when it does not, knowing *which*
@@ -104,8 +110,8 @@ def _read_award_categories(article) -> list[str]:
 def _read_poster_url(article) -> str | None:
     """The absolute URL of the poster, or None when the page has none.
 
-    219 of the 1678 films in the dataset have no poster at all, so a missing
-    one is the normal case for those films and not an error. The path is
+    Every one of the 1678 films in the dataset has one, so a `None` here means
+    the page is not what we think it is and is worth noticing. The path is
     resolved against SITE_URL because the site publishes it relative.
     """
     tag = article.select_one(SELECTOR_POSTER)

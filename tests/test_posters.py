@@ -10,7 +10,7 @@ import requests
 from conftest import FakeResponse, make_client
 from goya_scraper.http_client import RobotsDisallowed
 from goya_scraper.model import Movie
-from goya_scraper.run import POSTER_DIR, fetch_movie, fetch_poster
+from goya_scraper.run import POSTER_DIR, add_movie, fetch_movie, fetch_poster
 
 JPEG = b"\xff\xd8\xff\xe0" + b"\x00" * 20
 URL = "https://www.premiosgoya.com/wp-content/uploads/cartel.jpg"
@@ -34,6 +34,47 @@ def poster_dir(tmp_path, monkeypatch):
 
 def a_movie_with_poster() -> Movie:
     return Movie(slug="ejemplo", title="Ejemplo", poster_url=URL)
+
+
+class TestFillingAGapInAnExistingRecord:
+    """The second bug, found by actually running the thing.
+
+    `add_movie` only ever merged nominations, so a poster downloaded on a later
+    pass was thrown away: the record that survived was the old one, without it.
+    384 films hit this. Filling a gap is not overwriting, so it does not
+    conflict with keeping the detail page from the first pass.
+    """
+
+    def test_a_poster_reaches_a_record_that_had_none(self):
+        movies = {"ejemplo": Movie(slug="ejemplo", title="Ejemplo")}  # no poster
+        fresh = Movie(slug="ejemplo", title="Ejemplo", poster_url=URL,
+                      poster_path="data/posters/ejemplo.jpg")
+
+        add_movie(movies, fresh)
+
+        assert movies["ejemplo"].poster_url == URL
+        assert movies["ejemplo"].poster_path == "data/posters/ejemplo.jpg"
+
+    def test_a_poster_already_there_is_not_overwritten(self):
+        movies = {"ejemplo": Movie(slug="ejemplo", title="Ejemplo",
+                                   poster_url="https://x/viejo.jpg",
+                                   poster_path="data/posters/viejo.jpg")}
+        fresh = Movie(slug="ejemplo", title="Ejemplo", poster_url=URL,
+                      poster_path="data/posters/nuevo.jpg")
+
+        add_movie(movies, fresh)
+
+        assert movies["ejemplo"].poster_url == "https://x/viejo.jpg"
+
+    def test_filling_the_gap_does_not_touch_the_detail_page(self):
+        """The first pass's detail is kept; only the gap is filled."""
+        movies = {"ejemplo": Movie(slug="ejemplo", title="El título bueno")}
+        fresh = Movie(slug="ejemplo", title="Otro", poster_url=URL)
+
+        add_movie(movies, fresh)
+
+        assert movies["ejemplo"].title == "El título bueno"
+        assert movies["ejemplo"].poster_url == URL
 
 
 class TestDownloadingDuringTheRun:

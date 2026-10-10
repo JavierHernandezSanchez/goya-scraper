@@ -116,7 +116,7 @@ porcentaje indica con qué frecuencia la fuente los tiene, medido sobre 173 pel�
 | `countries`        | `list[str]`     | 98%      | Normalizado. Ver abajo.                                                      |
 | `countries_raw`    | `str` \| `null` | 98%      | Valor literal de la fuente. **Se conserva siempre.**                         |
 | `duration_minutes` | `int` \| `null` | 30%      | La fuente dice `"105 minutos"`; se extrae el entero.                         |
-| `poster_url`       | `str` \| `null` | 87%      | URL absoluta del cartel. `null` en 219 de 1678: el sitio no lo publica.      |
+| `poster_url`       | `str` \| `null` | 100%     | URL absoluta del cartel. Todas las fichas lo tienen.                        |
 | `poster_path`      | `str` \| `null` | —        | Ruta relativa a la imagen. `null` si no se pudo descargar.                   |
 | `credits`          | `obj`           | —        | Ver abajo.                                                                   |
 
@@ -130,9 +130,12 @@ Son dos hechos distintos, y confundirlos es el error que este proyecto ya pagó 
 | `poster_url`   | ¿el sitio tiene ese cartel?      | No lo publica           |
 | `poster_path`  | ¿lo hemos descargado?            | No se pudo              |
 
-Con un solo campo, las 219 películas sin cartel y una descarga fallida serían el mismo valor.
+Con un solo campo, «el sitio no tiene cartel» y «no se pudo descargar» serían el mismo
+valor. Hoy las 1678 tienen cartel, así que los dos `null` todavía no se han dado: sirven el
+día que el sitio falle.
 
-El **87%** sale de medir las 1678 fichas reales: 1459 tienen `img.attachment-cartel`. La
+El **100%** sale de medir las 1678 fichas reales. El selector cubre dos clases porque el
+theme no es consistente: 1459 usan `attachment-cartel` y 219 `attachment-galeria`. La
 extensión del fichero la deciden los bytes que llegan y no la URL, porque el sitio publica
 el mismo formato como `.jpg` y como `.jpeg`. Antes de guardar se comprueba la firma: un
 200 con un aviso de error dentro no se guarda. Todo en ADR-039.
