@@ -225,17 +225,23 @@ goya-scraper/
 ├── tests/
 │   ├── fixtures/           HTML real, recortado
 │   └── test_*.py
-├── data/movies.json        el resultado del scraper (fuente de verdad)
+├── data/movies.json        el resultado del scraper (fuente de verdad, versionado)
 ├── data/goya.db            la copia consultable (se regenera, no se versiona)
 ├── cache/                  HTML crudo (no se versiona)
 ├── docs/                   esta documentación
+├── AGENTS.md               reglas de trabajo e invariantes
+├── LICENSE                 MIT
 ├── pyproject.toml
 └── README.md
 ```
 
-`cache/` y `data/movies.json` están en `.gitignore`. El dataset se regenera con un comando,
-así que no tiene sentido versionarlo. Si algún día se quiere publicar el JSON en GitHub,
-se descomenta la línea correspondiente del `.gitignore`.
+`cache/` y `data/goya.db` están en `.gitignore`: se regeneran y no aportan nada al
+repositorio.
+
+`data/movies.json`, en cambio, **sí está versionado**: es el resultado del proyecto y
+permite consultar los datos sin esperar la descarga. El coste es que regenerarlo produce
+un diff muy grande, así que ese cambio va en un commit propio y deliberado, nunca
+mezclado con otra cosa. Ver la sección de estado en Git de [`AGENTS.md`](../AGENTS.md).
 
 ---
 

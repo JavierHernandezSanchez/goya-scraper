@@ -59,9 +59,28 @@ pip install -e ".[dev]"
 
 Requiere **Python 3.10+**. Dependencias: `requests`, `beautifulsoup4` y `pytest`.
 
+> **No necesitas ejecutar el scraper para usar los datos.** `data/movies.json` está
+> versionado en el repositorio: al clonar ya tienes las 1678 películas, sus 4050
+> nominaciones y sus 1027 premios. El scraper solo hace falta para *actualizar* esos
+> datos cuando la Academia publique una edición nueva.
+
 ---
 
 ## Uso
+
+### Para consultar los datos
+
+No hace falta nada más: el JSON está en el repositorio. Para la base de datos:
+
+```bash
+python -m goya_scraper.import_db      # movies.json -> goya.db
+python -m goya_scraper.db_validate    # comprueba una contra el otro
+sqlite3 data/goya.db                  # a preguntar
+```
+
+### Para actualizar los datos
+
+Solo cuando quieras volver a pedirle los datos a la Academia:
 
 ```bash
 python -m goya_scraper
@@ -74,6 +93,10 @@ Sin argumentos, sin opciones, sin CLI. Eso lo hace todo.
 | Primera vez, todo el histórico | 1719                | ~35 min      |
 | Segunda vez                    | **0**               | ~3 s         |
 | Reanudada tras un corte        | solo lo que faltaba | lo que falte |
+
+> **Lee esto antes de lanzarlo:** recorre el sitio entero, genera muchísimas peticiones y
+> tarda bastante. No es una forma rápida de "probar el código": para eso están los tests,
+> que no tocan la red. Si lo lanzas, deja que termine en lugar de interrumpirlo.
 
 > **Estado: proyecto terminado.** El comando recorre las 40 ediciones, escribe
 > `data/movies.json` y valida el resultado.
@@ -174,9 +197,11 @@ goya-scraper/
 │   ├── import_db.py     # movies.json -> goya.db
 │   └── db_validate.py   # comprueba la base contra el JSON
 ├── tests/               # 394 tests, sin internet
-├── data/movies.json    # el resultado (fuente de verdad)
-├── data/goya.db        # la copia consultable (se regenera)
+├── data/movies.json    # el resultado. Fuente de verdad, versionado en el repo
+├── data/goya.db        # la copia consultable (se regenera, no se versiona)
 ├── cache/              # HTML crudo (no se versiona)
+├── LICENSE             # MIT
+├── AGENTS.md           # reglas de trabajo e invariantes del proyecto
 └── docs/
 ```
 
@@ -191,14 +216,20 @@ primera**: `run.py` no sabe que existe SQLite. Lo comprueba un test.
 ## Dónde están los datos
 
 ```
-data/movies.json    # la fuente de verdad. El scraper lo escribe, nada más
+data/movies.json    # la fuente de verdad. El scraper lo escribe, nada más. Versionado.
 data/goya.db        # una proyección consultable. Se reconstruye desde el JSON
 ```
+
+`data/movies.json` está versionado en el repositorio, así que se puede consultar sin
+ejecutar nada. Si prefieres SQL, un comando lo convierte en base de datos.
 
 |                                     | Documentación                              |
 | ----------------------------------- | ------------------------------------------ |
 | `movies.json`, campo a campo        | [`docs/data-model.md`](docs/data-model.md) |
 | El modelo relacional, tabla a tabla | [`docs/database.md`](docs/database.md)     |
+
+**Licencia:** MIT, en [`LICENSE`](LICENSE). Los datos vienen de la Academia de Cine; mira
+la [nota sobre los datos](#nota-sobre-los-datos) antes de redistribuirlos.
 
 ---
 
@@ -263,7 +294,7 @@ Decisiones tomadas de forma consciente, documentadas en
 - **Sin IMDb, Rotten Tomatoes ni Filmaffinity.** IMDb está **prohibida por su
   `robots.txt`**; Filmaffinity está tras Cloudflare; Rotten Tomatoes exigiría un sistema
   de matching desproporcionado para el beneficio.
-- **Base de datos** Hay base de datos, pero **fuera** del scraper: `import_db` cuelga de `storage` y el recorrido de descarga no la importa. SQLite  se consulta con `sqlite3 data/goya.db`.
+- **Sin base de datos dentro del scraper.** Hay base de datos, pero **fuera** de él: `import_db` cuelga de `storage` y el recorrido de descarga no la importa. SQLite se consulta con `sqlite3 data/goya.db`.
 - **Sin ORM.** `sqlite3` de la librería estándar y SQL a mano. Un ORM escondería
   precisamente lo que esta fase enseña: las claves foráneas, los `JOIN` y los índices.
 - **Sin CLI.** Se ejecuta con `python -m goya_scraper`. Las dos órdenes de la base de datos
