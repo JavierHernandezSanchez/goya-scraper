@@ -66,9 +66,9 @@ es `edición + 1986`.
 
 **Motivo.** Es un dato *no encontrado*, y la regla del proyecto es no inventar. Además la
 derivación tiene una fuente de error real: una película estrenada a finales de año
-compite en la edición siguiente, pero loscortometrajes y los films de Documental
-incorporanUC una relación con la fecha deiliate podría shifting; no es una regla
-constante y no podemos verificarlo con la fuente disponible.
+compite en la edición siguiente, pero en los cortometrajes y el documental esa relación
+con la fecha no se cumple; no es una regla constante y no podemos verificarlo con la fuente
+disponible.
 
 Descartado también por reversibilidad: si algún día se incorpora el año real, se rellena
 el campo sin tocar nada más.
@@ -587,7 +587,7 @@ cada par renombrado **no coexisten** y que cubren ediciones **contiguas**. Si un
 Academia usa las dos a la vez, el programa avisa en vez de confiar en una constante.
 
 La comprobación solo se ejecuta con más de 50 películas: un documento de tres películas no puede
-demostrar si dos etiquetas coexisten, así que en los tests 작은 saltaría sin motivo.
+demostrar si dos etiquetas coexisten, así que en los tests pequeños saltaría sin motivo.
 
 ---
 

@@ -205,6 +205,9 @@ Una tarea está terminada cuando:
 - [ ] Las decisiones arquitectónicas modificadas están documentadas.
 - [ ] El cambio se mantiene dentro del alcance acordado
 - [ ] Las pruebas o verificaciones pendientes, limitaciones y riesgos se declaran explícitamente.
+- [ ] **Ningún fichero fuera del proyecto ha sido creado ni modificado.** Si una tarea
+      necesita un auxiliar, va dentro del proyecto y se borra al terminar. `/tmp` cuenta
+      como fuera del proyecto.
 
 Y, cuando el cambio toque el dato o el esquema, estos cuatro:
 
@@ -224,5 +227,10 @@ Si alguna comprobación no puede ejecutarse, indica cuál, por qué y qué evide
 - Comentarios para explicar decisiones o motivos no evidentes, no para repetir el código.
 - Dependencias y abstracciones mínimas.
 - Sin ORM, CLI adicional, linter ni nuevas dependencias salvo que una tarea aprobada justifique el cambio.
+- **Ningún fichero de texto de más de unas 50 líneas en una sola operación.** Escribir un
+  bloque largo de una vez lo corrompe: una sílaba de coreano colada en una frase, una
+  preposición pegada a un identificador. Pasa en `.md`, en `.py` y en los mensajes de
+  commit. Escribe a un fichero temporal, léelo, y solo entonces incorpóralo. La regla y los
+  dos `grep` que cazan lo que se escape están en `docs/development.md`.
 
 Ante varias soluciones correctas, elige la que preserve mejor la arquitectura existente, sea más fácil de verificar y requiera menos complejidad accidental.

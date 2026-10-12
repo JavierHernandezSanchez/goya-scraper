@@ -330,10 +330,14 @@ class TestWhatTheDocumentSays:
             connection.close()
 
 
-def _tmp_db():
-    import tempfile
+def _tmp_db(tmp_path):
+    """A database path under pytest's temporary directory.
 
-    return pathlib.Path(tempfile.mkdtemp()) / "goya.db"
+    It used to call tempfile.mkdtemp(), which leaves the directory behind
+    forever: every full run leaked one per test that used it. tmp_path is
+    cleaned up by pytest, and is what the other tests in this file already use.
+    """
+    return tmp_path / "goya.db"
 
 
 class TestNominationIsTheCore:
@@ -460,11 +464,11 @@ class TestCreditsAndPeople:
         ]
         assert positions == [1]
 
-    def test_two_roles_in_one_film_become_two_rows(self, imported):
+    def test_two_roles_in_one_film_become_two_rows(self, imported, tmp_path):
         movie = minimal_movie()
         movie["credits"]["screenwriters"] = ["Alma Gárate"]
         document = minimal_document([movie])
-        path = _tmp_db()
+        path = _tmp_db(tmp_path)
         import_db.import_document(document, path)
         connection = db.connect(path)
         try:
@@ -480,7 +484,7 @@ class TestCreditsAndPeople:
         finally:
             connection.close()
 
-    def test_the_technical_crew_survives_only_through_nominations(self, imported):
+    def test_the_technical_crew_survives_only_through_nominations(self, imported, tmp_path):
         """Sound, photography and wardrobe have no field on the film page, so
         without nomination_credit they would not exist at all."""
         movie = minimal_movie()
@@ -496,7 +500,7 @@ class TestCreditsAndPeople:
             }
         )
         document = minimal_document([movie])
-        path = _tmp_db()
+        path = _tmp_db(tmp_path)
         import_db.import_document(document, path)
         connection = db.connect(path)
         try:
@@ -526,7 +530,7 @@ class TestReportedAwards:
         """Distinct from a zero: 'not registered' is not 'said none'."""
         movie = minimal_movie()
         movie["data_quality"]["reported_by_source"]["award_categories"] = None
-        path = _tmp_db()
+        path = _tmp_db(tmp_path)
         import_db.import_document(minimal_document([movie]), path)
         connection = db.connect(path)
         try:

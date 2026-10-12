@@ -216,6 +216,90 @@ pequeño con `ñ`, tildes y símbolos) confirmó que el canal no era el problema
 
 ---
 
+## La misma lección, aplicada a la prosa
+
+El caso de `schema.sql` no es un caso particular: es **escribir un bloque largo de una vez
+y confiar en que salga bien**. En un fichero de SQL el síntoma fueron bytes de control; en un
+documento o un mensaje de commit son palabras corruptas.
+
+La forma que toman es siempre la misma, y se reconoce:
+
+- **Fusión en una frontera de palabra**: `está` + `abierto` → `estáEbierto`. También al
+  revés: se pierde el espacio y se junta lo que venía detrás (`en` + `ADR-010`).
+- **Intrusión de otro idioma**: identificadores en inglés o de otra lengua pegados a la
+  prosa española.
+- **Fallo de acentuación**: `salía` → `salioan`.
+
+Aparecen en bloques largos de una sola vez —un fichero entero, un `cat >>`, un mensaje de
+commit— y **nunca** en una edición corta, donde la cadena nueva se ve junto a la anterior.
+
+**La regla que se deduce:** ningún fichero de texto por encima de unas 50 líneas en una
+sola operación.
+
+Lo que hay que revisar es **el texto**, no un fichero concreto. Da igual dónde se componga:
+un ADR se lee antes de anexarlo, y un mensaje de commit se lee después con
+`git log -1 --format=%B` y se corrige con `--amend` si está mal. No hace falta un fichero
+auxiliar para ninguna de las dos cosas, y si hiciera falta, va dentro del proyecto y se
+borra después.
+
+Es la misma regla del `.sql`, aplicada donde faltaba. Y el resultado es el mismo: al
+escribir de golpe, esta documentación acumuló durante meses tres palabras corruptas que
+nadie notó. Una era una sílaba de coreano en medio de una frase, y las otras dos eran una
+preposición pegada a un identificador y una preposición pegada a la palabra siguiente. Las
+dos comprobaciones de abajo las encontraron a la primera, sin haberlas buscado.
+
+## Dos comprobaciones mecánicas
+
+Vigilancia no sirve: releer detecta casi todo, pero casi. Dos `grep` bastan para lo que un
+ojo deja pasar, y los dos son de una línea.
+
+**Palabras de otro alfabeto.** Un solo caso de_coreano o chino colado en la prosa es
+corrupción y no hay ninguna razón legítima para que aparezca. Desde la raíz del proyecto:
+
+```bash
+grep -rPn '[\x{1100}-\x{11ff}\x{3130}-\x{318f}\x{4e00}-\x{9fff}\x{3040}-\x{30ff}\x{0400}-\x{04ff}]' \
+  README.md AGENTS.md docs/ src/ tests/
+```
+
+Salida vacía es lo esperado. El rango no incluye las tildes ni los símbolos de los
+árboles ASCII, que sí son legítimos.
+
+**Fusión en una frontera de palabra**, dentro de la prosa y fuera de los bloques de código.
+Este necesita dos preparaciones: quitar los bloques ```` ``` ````, las comillas invertidas y
+los enlaces, y sustituir los nombres propios por algo innocuouso antes de buscar, porque
+`BeautifulSoup` y `WordPress` llevan mayúscula en medio y son legítimos:
+
+```bash
+python3 - <<'PY'
+import pathlib, re
+PROPIOS = ["BeautifulSoup", "WordPress", "JavaScript", "GitHub", "SQLite"]
+for f in ["README.md", "AGENTS.md", *map(str, pathlib.Path("docs").glob("*.md"))]:
+    en_codigo = False
+    for i, l in enumerate(pathlib.Path(f).read_text(encoding="utf-8").splitlines(), 1):
+        if l.strip().startswith("```"):
+            en_codigo = not en_codigo
+            continue
+        if en_codigo:
+            continue
+        limpio = re.sub(r"`[^`]*`", "", l)
+        limpio = re.sub(r"\*\*[^*]*\*\*", "", limpio)
+        limpio = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", limpio)
+        for p in PROPIOS:
+            limpio = limpio.replace(p, "\x00")
+        for m in re.finditer(r"[a-zá-úñ][A-ZÁ-ÚÑ]", limpio):
+            print(f"{f}:{i}: {limpio[max(0, m.start()-30):m.end()+30].strip()}")
+PY
+```
+
+También debería salir vacío. Si salen cosas, mirarlas todas: las tres que encontró al
+aplicarlo eran de verdad.
+
+**Por qué dos comprobaciones y no una regla de "tener cuidado".** Porque la vigilancia no
+funciona. Once veces se colaron palabras corruptas y las once aparecieron al releer o al
+comparar, nunca al escribir. Un `grep` encuentra la segunda sin que nadie decida mirar.
+
+---
+
 ## Estructura del proyecto
 
 ```

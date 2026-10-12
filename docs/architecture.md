@@ -219,7 +219,7 @@ añade nada. Cuando un módulo tiene cinco funciones con nombres claros, el mód
 abstracción.
 
 **El ensamblado vive en `run.py`, no en `storage.py`.** Son responsabilidades distintas:
-`storage.py` sabe de JSON, `run.py` sabe deDatas de Goyas. Mezclarlas es lo que convierte
+`storage.py` sabe de JSON, `run.py` sabe de datos de Goyas. Mezclarlas es lo que convierte
 un proyecto pequeño en ilegible.
 
 **El diccionario por `slug` es el estado del proceso.** No hay base de datos, ni índice

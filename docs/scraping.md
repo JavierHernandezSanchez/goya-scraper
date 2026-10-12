@@ -245,7 +245,7 @@ en el log: cuántas películas, cuántas nominaciones, cuántas ediciones, y cu�
 
 ## Incrementalidad
 
-Resumido, porque enADR-010 está el porqué:
+Resumido, porque en ADR-010 está el porqué:
 
 1. Al arrancar se lee `data/movies.json` y se ve qué ediciones hay ya.
 2. Se pide la home para saber qué ediciones existen (1 petición, cacheada).
